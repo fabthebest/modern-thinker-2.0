@@ -2,7 +2,7 @@
 
 ## 🔗 Repository
 
-👉 https://github.com/fabthebest/modern-thinker-2.0
+👉 https://github.com/fabthebest/modern-thinker-2.0 
 
 ---
 
