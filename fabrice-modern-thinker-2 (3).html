@@ -1,0 +1,2930 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Fabrice Fils-Aimé - Modern Thinker 2.0</title>
+<meta name="description" content="Modern Thinker 2.0 - Écrivain, éditeur multilingue, passionné d'IA. Écrits, poésie, essais, recherches sur l'IA. Site officiel de Fabrice Fils-Aimé, auteur d'Énigme."/>
+<link rel="canonical" href="https://fabricefilsaime.com/"/>
+<meta property="og:title" content="Fabrice Fils-Aimé"/>
+<meta property="og:description" content="Écrivain, éditeur, essayiste."/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/></noscript>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Fabrice Fils-Aimé","url":"https://fabricefilsaime.com","jobTitle":"Écrivain, Éditeur, Essayiste"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Book","name":"Énigme","author":{"@type":"Person","name":"Fabrice Fils-Aimé"},"isbn":"2386170993","datePublished":"2024-04-08","inLanguage":"fr","url":"https://www.amazon.ca/dp/2386170993"}</script>
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root {
+  --night:   #09080A;
+  --deep:    #0F0D13;
+  --surface: #151219;
+  --lifted:  #1D1A24;
+  --border:  rgba(255,255,255,.08);
+  --border2: rgba(255,255,255,.15);
+  --fog:     #6B6778;
+  --mist:    #A09AAE;
+  --snow:    #F4F0FA;
+  --warm:    #EDE5D8;
+  --gold:    #D4A84B;
+  --gold2:   #F0C060;
+  --rust:    #C85A32;
+  --sage:    #5EAF94;
+  --violet:  #A07ED4;
+  --blue:    #4A8FE0;
+  --rose:    #C4607A;
+  --amber:   #D4882A;
+  --emerald: #3D9E7A;
+  --indigo:  #5B6FD4;
+
+  --serif:   'EB Garamond', Georgia, serif;
+  --sans:    'Outfit', system-ui, sans-serif;
+  --mono:    'Courier Prime', monospace;
+
+  --max:     1120px;
+  --pad:     clamp(1.5rem, 5vw, 4rem);
+  --hh:      68px;
+
+  --ease1: cubic-bezier(.16,1,.3,1);
+  --ease2: cubic-bezier(.4,0,.2,1);
+}
+
+/* ============================================================
+   RESET
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  background:var(--night);
+  color:var(--snow);
+  font-family:var(--sans);
+  font-weight:300;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  cursor:none;
+}
+@media(hover:none){body{cursor:auto}.cur,.cur-dot{display:none}}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{background:none;border:none;cursor:pointer;color:inherit;font:inherit}
+ul{list-style:none}
+
+/* NOISE */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9990;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+.cur{
+  position:fixed;width:40px;height:40px;
+  border:1px solid rgba(200,169,110,.5);
+  border-radius:50%;pointer-events:none;z-index:9995;
+  transform:translate(-50%,-50%);
+  transition:transform .4s var(--ease1),width .3s,height .3s,border-color .3s,background .3s;
+  mix-blend-mode:difference;
+}
+.cur-dot{
+  position:fixed;width:5px;height:5px;background:var(--gold);
+  border-radius:50%;pointer-events:none;z-index:9996;
+  transform:translate(-50%,-50%);
+  transition:transform .1s;
+}
+.cur.hover{width:64px;height:64px;border-color:var(--gold);background:rgba(200,169,110,.06);}
+
+/* SKIP */
+.skip{position:absolute;top:-9em;left:1rem;background:var(--gold);color:var(--night);
+  padding:.5rem 1rem;font-family:var(--mono);font-size:.75rem;z-index:9999;
+  border-radius:2px;transition:top .2s}
+.skip:focus{top:1rem}
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;background:var(--night);z-index:9000;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;
+  transition:opacity .8s var(--ease1),visibility .8s;
+}
+#loader.out{opacity:0;visibility:hidden;pointer-events:none}
+.loader-f{
+  font-family:var(--serif);font-style:italic;font-size:6rem;color:var(--snow);
+  opacity:0;animation:ldpop 1s .2s var(--ease1) forwards;
+}
+.loader-bar{width:80px;height:1px;background:var(--border2);position:relative;overflow:hidden;
+  opacity:0;animation:ldfade .5s .6s forwards}
+.loader-bar::after{content:'';position:absolute;inset:0;background:var(--gold);
+  animation:ldscan 1.2s .8s var(--ease2) forwards}
+
+@keyframes ldpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes ldfade{to{opacity:1}}
+@keyframes ldscan{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  position:fixed;top:0;left:0;right:0;height:var(--hh);z-index:800;
+  background:rgba(9,8,10,.75);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  backdrop-filter:saturate(180%) blur(24px);
+  border-bottom:1px solid var(--border);
+  transition:box-shadow .3s;
+}
+header.sc{box-shadow:0 1px 40px rgba(0,0,0,.6)}
+.hdr{
+  max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);
+  height:100%;display:flex;align-items:center;gap:2rem;
+}
+.logo{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+.logo-badge{
+  width:34px;height:34px;background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--night);
+  border-radius:6px;transition:background .3s;
+}
+.logo:hover .logo-badge{background:var(--rust)}
+.logo-name{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--warm);letter-spacing:.01em}
+nav.dn{flex:1;display:flex;justify-content:center}
+nav.dn ul{display:flex;align-items:center;gap:.25rem}
+.nl{
+  font-family:var(--sans);font-size:.78rem;font-weight:400;
+  color:var(--fog);padding:.4rem .9rem;border-radius:6px;
+  transition:color .2s,background .2s;white-space:nowrap;
+  display:flex;align-items:center;gap:.3rem;
+}
+.nl:hover,.nl.on{color:var(--snow);background:rgba(255,255,255,.06)}
+.nl.cta{background:var(--gold)!important;color:var(--night)!important;font-weight:500}
+.nl.cta:hover{background:var(--rust)!important;color:#fff!important}
+.dd{position:relative}
+.dd-btn{display:flex;align-items:center;gap:.25rem}
+.dd-arr{display:inline-block;font-size:.7em;transition:transform .3s;margin-left:.1rem}
+.dd:hover .dd-arr,.dd:focus-within .dd-arr{transform:rotate(90deg)}
+.dd-menu{
+  position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%) translateY(-6px);
+  min-width:190px;background:var(--surface);
+  border:1px solid var(--border2);border-radius:12px;
+  padding:.5rem;opacity:0;pointer-events:none;
+  transition:opacity .25s var(--ease1),transform .25s var(--ease1);
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dd-menu a{
+  display:block;padding:.65rem 1rem;
+  font-family:var(--sans);font-size:.82rem;color:var(--mist);
+  border-radius:8px;transition:background .15s,color .15s;
+}
+.dd-menu a:hover{background:var(--lifted);color:var(--snow)}
+.hctrls{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.hbtn{
+  width:34px;height:34px;border:1px solid var(--border2);border-radius:7px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.7rem;color:var(--fog);
+  transition:border-color .2s,color .2s,background .2s;letter-spacing:.05em;
+}
+.hbtn:hover{border-color:var(--border2);color:var(--snow);background:var(--surface)}
+.mbtn{display:none}
+.bur,.bur::before,.bur::after{
+  display:block;width:18px;height:1.5px;background:var(--fog);
+  transition:transform .3s,opacity .3s,background .2s;
+}
+.bur{position:relative}
+.bur::before,.bur::after{content:'';position:absolute}
+.bur::before{top:-5px}.bur::after{top:5px}
+.mbtn[aria-expanded=true] .bur{background:transparent}
+.mbtn[aria-expanded=true] .bur::before{transform:rotate(45deg) translate(3.5px,3.5px);background:var(--snow)}
+.mbtn[aria-expanded=true] .bur::after{transform:rotate(-45deg) translate(3.5px,-3.5px);background:var(--snow)}
+
+/* Mobile menu */
+#mmenu{
+  position:fixed;inset:var(--hh) 0 0;background:rgba(9,8,10,.97);
+  -webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+  z-index:750;padding:3rem var(--pad);
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .3s var(--ease1),transform .3s var(--ease1);
+  border-top:1px solid var(--border);
+}
+#mmenu.open{opacity:1;pointer-events:all;transform:none}
+.mml a{
+  display:block;font-family:var(--serif);font-size:2.2rem;font-style:italic;
+  color:var(--fog);padding:1rem 0;border-bottom:1px solid var(--border);
+  transition:color .2s;
+}
+.mml a:hover{color:var(--snow)}
+.mml .mcta{color:var(--gold);border:none;margin-top:1rem}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:var(--pad)}
+section{padding-block:clamp(5rem,10vw,9rem)}
+.divider{width:100%;height:1px;background:var(--border)}
+
+/* ============================================================
+   REVEAL ANIMATION
+   ============================================================ */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .9s var(--ease1),transform .9s var(--ease1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+#hero{
+  min-height:100svh;display:flex;align-items:center;
+  position:relative;overflow:hidden;padding-top:var(--hh);
+}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.orb1{
+  position:absolute;width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle at 50%,rgba(200,169,110,.07),transparent 65%);
+  top:-200px;right:-250px;
+  animation:orbf 20s ease-in-out infinite alternate;
+}
+.orb2{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(196,98,58,.05),transparent 70%);
+  bottom:-100px;left:-150px;
+  animation:orbf 15s 3s ease-in-out infinite alternate-reverse;
+}
+@keyframes orbf{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(30px,20px)}}
+.hero-lines{
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    0deg,transparent,transparent 79px,rgba(255,255,255,.018) 79px,rgba(255,255,255,.018) 80px
+  );
+  pointer-events:none;
+}
+
+.hero-inner{position:relative;z-index:1;padding-block:6rem 4rem}
+
+.hero-tag{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);
+  display:inline-flex;align-items:center;gap:.75rem;margin-bottom:3rem;
+  opacity:0;animation:ainup .8s .3s var(--ease1) forwards;
+}
+.hero-tag::before{content:'';display:block;width:32px;height:1px;background:var(--gold)}
+
+h1.hero-title{
+  font-family:var(--serif);
+  font-size:clamp(3.8rem,9vw,8.5rem);
+  font-weight:400;line-height:1.02;
+  letter-spacing:-.02em;
+  max-width:14ch;
+  opacity:0;animation:ainup .9s .45s var(--ease1) forwards;
+}
+h1.hero-title em{font-style:italic;color:var(--gold)}
+h1.hero-title .alt{color:var(--mist)}
+
+.hero-sub{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.1rem,2.2vw,1.45rem);
+  color:var(--mist);max-width:44ch;
+  margin-top:2.5rem;line-height:1.65;
+  opacity:0;animation:ainup .9s .6s var(--ease1) forwards;
+}
+
+.hero-actions{
+  display:flex;gap:1rem;flex-wrap:wrap;margin-top:3.5rem;
+  opacity:0;animation:ainup .9s .75s var(--ease1) forwards;
+}
+
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:var(--sans);font-size:.82rem;font-weight:500;
+  letter-spacing:.04em;padding:.9rem 2rem;border-radius:100px;
+  border:1px solid transparent;
+  transition:transform .25s var(--ease1),background .25s,color .25s,box-shadow .25s,border-color .25s;
+  white-space:nowrap;position:relative;overflow:hidden;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn-gold{background:var(--gold);color:var(--night);border-color:var(--gold)}
+.btn-gold:hover{background:var(--rust);border-color:var(--rust);box-shadow:0 8px 30px rgba(196,98,58,.35)}
+.btn-ghost{background:transparent;color:var(--snow);border-color:var(--border2)}
+.btn-ghost:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2)}
+.btn-sm{padding:.65rem 1.5rem;font-size:.78rem;border-radius:100px}
+
+.hero-scroll{
+  position:absolute;bottom:3rem;left:var(--pad);
+  display:flex;align-items:center;gap:1rem;
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;color:var(--fog);
+  opacity:0;animation:ainup .8s 1.2s var(--ease1) forwards;
+}
+.scroll-track{width:40px;height:1px;background:var(--border2);position:relative;overflow:hidden}
+.scroll-track::after{
+  content:'';position:absolute;inset:0;background:var(--gold);
+  animation:scrolltick 2.4s 2s var(--ease2) infinite;
+}
+@keyframes scrolltick{0%{transform:translateX(-100%)}100%{transform:translateX(200%)}}
+
+/* Large ghost letter */
+.hero-ghost{
+  position:absolute;right:-2vw;bottom:-4vh;
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(18rem,30vw,38rem);
+  color:transparent;
+  -webkit-text-stroke:1px rgba(255,255,255,.025);
+  line-height:1;pointer-events:none;user-select:none;
+  opacity:0;animation:ainup 1.2s .2s var(--ease1) forwards;
+}
+
+@keyframes ainup{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   STATS BAR
+   ============================================================ */
+.stats-bar{
+  background:var(--surface);
+  border-block:1px solid var(--border);
+  padding-block:0;
+}
+.stats-inner{
+  max-width:var(--max);margin-inline:auto;padding-inline:var(--pad);
+  display:flex;justify-content:space-between;
+  border-inline:1px solid var(--border);
+}
+.stat{
+  padding:2.5rem 2rem;text-align:center;flex:1;
+  border-right:1px solid var(--border);
+  transition:background .3s;
+}
+.stat:last-child{border-right:none}
+.stat:hover{background:var(--lifted)}
+.stat-n{
+  font-family:var(--serif);font-size:2.8rem;font-style:italic;
+  color:var(--gold);display:block;line-height:1;
+}
+.stat-l{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--fog);margin-top:.5rem;display:block;
+}
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+#apropos{background:var(--deep)}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:5rem;align-items:start;
+}
+.eyebrow{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);
+  display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem;
+}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold)}
+.sec-title{
+  font-family:var(--serif);
+  font-size:clamp(2.2rem,4vw,3.6rem);
+  font-weight:400;line-height:1.12;letter-spacing:-.01em;
+  margin-bottom:1.5rem;
+}
+.sec-title em{font-style:italic;color:var(--gold)}
+.body-p{
+  font-family:var(--sans);font-size:.97rem;color:var(--mist);
+  line-height:1.85;margin-bottom:1.1rem;max-width:52ch;
+}
+.about-credential{
+  margin-top:2.5rem;padding:1.5rem;
+  background:var(--surface);border:1px solid var(--border);
+  border-left:3px solid var(--gold);border-radius:0 8px 8px 0;
+}
+.cred-score{
+  font-family:var(--serif);font-size:2rem;font-style:italic;color:var(--gold);
+}
+.cred-label{
+  font-family:var(--mono);font-size:.65rem;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--fog);margin-top:.25rem;
+}
+.about-right{
+  padding-top:1rem;
+}
+.about-quote{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.5rem,3vw,2.1rem);
+  color:var(--warm);line-height:1.5;
+  border-left:2px solid var(--gold);
+  padding-left:2rem;margin-bottom:3rem;
+}
+.role-list{display:flex;flex-direction:column;gap:1px}
+.role-item{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 0;border-bottom:1px solid var(--border);
+}
+.role-name{font-family:var(--sans);font-size:.9rem;color:var(--snow)}
+.role-org{font-family:var(--mono);font-size:.68rem;color:var(--fog);letter-spacing:.06em}
+.role-tag{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+  text-transform:uppercase;padding:.25rem .65rem;
+  border:1px solid var(--border2);border-radius:100px;color:var(--mist);
+}
+
+/* ============================================================
+   BOOK
+   ============================================================ */
+#livre{overflow:hidden}
+.book-layout{display:grid;grid-template-columns:auto 1fr;gap:6rem;align-items:center}
+
+/* 3D Book */
+.book-scene{perspective:1400px;width:260px;flex-shrink:0}
+.book3d{
+  width:200px;height:300px;
+  transform-style:preserve-3d;
+  transform:rotateY(-30deg) rotateX(4deg);
+  transition:transform .8s var(--ease1);position:relative;
+}
+.book3d:hover{transform:rotateY(-12deg) rotateX(2deg)}
+.bf,.bsp,.bk{position:absolute;backface-visibility:hidden}
+.bf{
+  width:200px;height:300px;
+  background:linear-gradient(155deg,#241507 0%,#120B04 100%);
+  border-radius:2px 5px 5px 2px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7),inset 0 0 40px rgba(200,169,110,.04);
+  display:flex;flex-direction:column;justify-content:space-between;padding:1.8rem 1.5rem;
+  overflow:hidden;
+}
+.bf::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,transparent 45%);pointer-events:none;
+}
+.bf-author{font-family:var(--mono);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(200,169,110,.6)}
+.bf-title{font-family:var(--serif);font-style:italic;font-size:2.8rem;color:rgba(242,239,248,.95);line-height:1;font-weight:500}
+.bf-line{width:40px;height:1px;background:var(--gold);opacity:.4}
+.bsp{
+  width:26px;height:300px;
+  background:linear-gradient(to right,#0D0703,#1A0E07);
+  left:-26px;top:0;
+  transform:rotateY(90deg) translateZ(-13px);
+  transform-origin:right center;
+  display:flex;flex-direction:column;justify-content:space-between;
+  align-items:center;padding:1.5rem 0;
+}
+.bsp span{font-family:var(--serif);font-style:italic;font-size:.48rem;color:rgba(242,239,248,.35);writing-mode:vertical-rl}
+.book-shadow{
+  width:160px;height:16px;margin-top:1.5rem;margin-left:20px;
+  background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);
+  border-radius:50%;
+}
+
+/* Book info */
+.book-info .sec-title{margin-bottom:.5rem}
+.book-quote-text{
+  font-family:var(--serif);font-style:italic;
+  font-size:clamp(1.2rem,2.5vw,1.7rem);
+  color:var(--warm);line-height:1.6;
+  border-left:2px solid var(--rust);padding-left:2rem;
+  margin:2rem 0 2.5rem;
+}
+.book-meta{
+  display:flex;gap:2.5rem;padding-bottom:2rem;margin-bottom:2.5rem;
+  border-bottom:1px solid var(--border);flex-wrap:wrap;
+}
+.bm-item{display:flex;flex-direction:column;gap:.3rem}
+.bm-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fog)}
+.bm-val{font-family:var(--sans);font-size:.92rem;font-weight:500;color:var(--snow)}
+.book-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem}
+.amazon-hint{font-family:var(--mono);font-size:.65rem;color:var(--fog);letter-spacing:.06em}
+
+/* ============================================================
+   WRITINGS SHARED
+   ============================================================ */
+.sec-head{margin-bottom:4rem}
+.sec-head .eyebrow{margin-bottom:1rem}
+
+/* Card grid */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.card-grid.g2{grid-template-columns:repeat(2,1fr)}
+.card-grid.g1{grid-template-columns:1fr;max-width:740px}
+
+.wcard{
+  background:var(--deep);
+  padding:2.5rem;
+  cursor:pointer;
+  transition:background .3s,transform .3s;
+  position:relative;overflow:hidden;
+}
+.wcard::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+  background:var(--gold);transition:width .4s var(--ease1);
+}
+.wcard:hover{background:var(--surface)}
+.wcard:hover::after{width:100%}
+.wcard.large{padding:3.5rem}
+.ctag{
+  font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+  display:inline-block;margin-bottom:1.25rem;padding:.2rem .6rem;border-radius:2px;
+}
+.t-ref{background:rgba(196,98,58,.12);color:var(--rust)}
+.t-poe{background:rgba(155,142,196,.12);color:var(--violet)}
+.t-ess{background:rgba(122,184,160,.12);color:var(--sage)}
+.t-ia {background:rgba(200,169,110,.12);color:var(--gold)}
+.t-act{background:rgba(255,255,255,.06);color:var(--mist)}
+.ctitle{
+  font-family:var(--serif);font-size:clamp(1.15rem,2.2vw,1.6rem);
+  font-weight:400;color:var(--snow);line-height:1.25;margin-bottom:.9rem;
+}
+.cexcerpt{
+  font-family:var(--sans);font-size:.87rem;color:var(--fog);
+  line-height:1.75;margin-bottom:1.5rem;
+}
+.cfooter{
+  display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:.62rem;color:var(--fog);letter-spacing:.06em;
+  padding-top:1.25rem;border-top:1px solid var(--border);
+}
+.cread-more{
+  font-family:var(--mono);font-size:.65rem;color:var(--gold);
+  letter-spacing:.1em;transition:gap .2s;display:flex;align-items:center;gap:.4rem;
+}
+.wcard:hover .cread-more{gap:.7rem}
+/* Poem specific */
+.poem-lines{
+  font-family:var(--serif);font-style:italic;font-size:1rem;
+  color:var(--mist);line-height:2.1;margin-bottom:1.25rem;
+}
+
+/* ============================================================
+   RÉFLEXIONS
+   ============================================================ */
+#reflexions{background:var(--night)}
+
+/* ============================================================
+   POÉSIE
+   ============================================================ */
+#poesie{background:var(--deep)}
+#poesie .card-grid{grid-template-columns:1.5fr 1fr}
+
+/* ============================================================
+   ESSAIS
+   ============================================================ */
+#essais{background:var(--night)}
+
+/* ============================================================
+   IA & SCIENCE
+   ============================================================ */
+#ia{background:var(--deep)}
+.ia-hero-band{
+  background:linear-gradient(135deg,rgba(200,169,110,.04),rgba(196,98,58,.03));
+  border:1px solid var(--border);border-radius:16px;
+  padding:3.5rem;margin-bottom:3rem;display:flex;gap:4rem;align-items:center;
+}
+.ia-big-icon{font-size:4rem;flex-shrink:0}
+.ia-intro-title{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2rem);color:var(--snow);margin-bottom:.75rem}
+.ia-intro-sub{font-family:var(--sans);font-size:.92rem;color:var(--fog);line-height:1.7;max-width:52ch}
+
+/* ============================================================
+   ACTUALITÉS
+   ============================================================ */
+#actualites{background:var(--night)}
+.actu-list{display:flex;flex-direction:column}
+.aitem{
+  display:grid;grid-template-columns:8rem 1fr auto;
+  align-items:start;gap:3rem;
+  padding:2rem 0;border-bottom:1px solid var(--border);
+  transition:padding-left .3s var(--ease1);
+  cursor:default;
+}
+.aitem:hover{padding-left:.75rem}
+.adate{font-family:var(--mono);font-size:.65rem;color:var(--fog);letter-spacing:.08em;padding-top:4px;white-space:nowrap}
+.atitle{font-family:var(--serif);font-size:1.15rem;color:var(--snow);margin-bottom:.4rem;transition:color .2s}
+.aitem:hover .atitle{color:var(--gold)}
+.adesc{font-family:var(--sans);font-size:.84rem;color:var(--fog);line-height:1.65}
+.abadge{
+  font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.25rem .7rem;border-radius:100px;white-space:nowrap;margin-top:4px;
+  border:1px solid var(--border2);color:var(--mist);
+}
+.ab-evt{border-color:rgba(200,169,110,.25);color:var(--gold)}
+.ab-pub{border-color:rgba(122,184,160,.25);color:var(--sage)}
+.ab-med{border-color:rgba(155,142,196,.25);color:var(--violet)}
+.ab-bk{border-color:rgba(196,98,58,.25);color:var(--rust)}
+.ab-rec{border-color:rgba(88,144,216,.25);color:#5890D8}
+
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+#newsletter{
+  background:var(--surface);
+  position:relative;overflow:hidden;
+}
+.nl-bg{position:absolute;inset:0;pointer-events:none}
+.nl-orb{
+  position:absolute;width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,169,110,.06),transparent 65%);
+  top:-200px;right:-100px;
+}
+.nl-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1}
+.nl-sec-title{font-family:var(--serif);font-size:clamp(2.5rem,5vw,4.2rem);font-weight:400;line-height:1.08;margin:1rem 0 1.5rem}
+.nl-desc{font-family:var(--sans);font-size:.95rem;color:var(--mist);line-height:1.8;max-width:40ch}
+.sub-pill{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;
+  background:rgba(255,102,0,.08);border:1px solid rgba(255,102,0,.2);
+  border-radius:100px;padding:.35rem 1rem;
+  font-family:var(--mono);font-size:.62rem;color:#FF8800;letter-spacing:.1em}
+.sub-dot{width:6px;height:6px;background:#FF8800;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.nlform{display:flex;flex-direction:column;gap:1.25rem}
+.fgrp{display:flex;flex-direction:column;gap:.5rem}
+.flabel{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fog)}
+.finput{
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--border2);
+  border-radius:8px;padding:1rem 1.25rem;
+  font-family:var(--sans);font-size:.95rem;color:var(--snow);
+  outline:none;width:100%;
+  transition:border-color .2s,box-shadow .2s;
+}
+.finput::placeholder{color:var(--fog);opacity:.6}
+.finput:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,169,110,.1)}
+.ferr{font-family:var(--mono);font-size:.62rem;color:#E05050;min-height:1em;display:block}
+.nl-submit{
+  background:var(--gold);color:var(--night);font-weight:500;
+  padding:1.1rem;border-radius:100px;width:100%;
+  display:flex;align-items:center;justify-content:center;gap:.5rem;
+  font-family:var(--sans);font-size:.85rem;letter-spacing:.04em;
+  transition:background .3s,transform .2s,box-shadow .3s;position:relative;overflow:hidden;
+}
+.nl-submit:hover{background:var(--rust);transform:translateY(-2px);box-shadow:0 10px 30px rgba(196,98,58,.3)}
+.nl-submit:active{transform:none}
+.btnloader{width:16px;height:16px;border:2px solid rgba(9,8,10,.3);border-top-color:var(--night);
+  border-radius:50%;animation:spin .8s linear infinite;display:none}
+.nl-submit.ld .btn-txt{opacity:0}.nl-submit.ld .btnloader{display:block}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nl-sub-link{text-align:center;font-family:var(--mono);font-size:.65rem;color:var(--fog);letter-spacing:.06em}
+.nl-sub-link a{color:var(--mist);transition:color .2s}.nl-sub-link a:hover{color:var(--gold)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--night);border-top:1px solid var(--border);padding-block:5rem 3rem}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:5rem;margin-bottom:4rem;padding-bottom:3rem;border-bottom:1px solid var(--border)}
+.footer-brand{font-family:var(--serif);font-style:italic;font-size:1.7rem;color:var(--warm);margin-bottom:1rem}
+.footer-desc{font-family:var(--sans);font-size:.84rem;color:var(--fog);line-height:1.75;max-width:30ch}
+.fcol-title{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);margin-bottom:1.5rem}
+.fcol li{margin-bottom:.75rem}
+.fcol a{font-family:var(--sans);font-size:.88rem;color:var(--mist);transition:color .2s}
+.fcol a:hover{color:var(--gold)}
+.fb{display:flex;justify-content:space-between;align-items:center}
+.fb p{font-family:var(--mono);font-size:.62rem;color:var(--fog);letter-spacing:.06em}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.85);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  z-index:900;display:flex;align-items:center;justify-content:center;
+  padding:2rem;opacity:0;visibility:hidden;
+  transition:opacity .3s var(--ease1),visibility .3s;
+}
+.overlay.open{opacity:1;visibility:visible}
+.modal-box{
+  background:var(--surface);border:1px solid var(--border2);
+  border-radius:20px;max-width:700px;width:100%;max-height:88vh;
+  overflow-y:auto;padding:3.5rem;position:relative;
+  transform:translateY(20px) scale(.98);
+  transition:transform .4s var(--ease1);
+}
+.overlay.open .modal-box{transform:none}
+.mclose{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:var(--lifted);border:1px solid var(--border);border-radius:6px;
+  padding:.4rem .8rem;font-family:var(--mono);font-size:.65rem;
+  color:var(--fog);letter-spacing:.1em;
+  transition:background .2s,color .2s;
+}
+.mclose:hover{background:var(--border2);color:var(--snow)}
+.modal-tag{display:inline-block;margin-bottom:1rem}
+.modal-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:400;line-height:1.18;margin-bottom:.75rem;color:var(--snow)}
+.modal-date{font-family:var(--mono);font-size:.65rem;color:var(--fog);letter-spacing:.1em;
+  margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.mbody{font-family:var(--serif);font-size:1.08rem;color:var(--mist);line-height:1.95}
+.mbody p{margin-bottom:1.5em}
+.mbody em{font-style:italic;color:var(--warm)}
+
+/* TOAST */
+.toast{
+  position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%) translateY(10px);
+  background:var(--lifted);border:1px solid var(--border2);
+  color:var(--snow);padding:.9rem 2rem;border-radius:100px;
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;
+  z-index:9999;opacity:0;pointer-events:none;
+  transition:opacity .3s,transform .3s;
+}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ============================================================
+   LANG SWITCHER
+   ============================================================ */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1024px){
+  nav.dn{display:none}
+  .mbtn{display:flex}
+  .book-layout{grid-template-columns:1fr}
+  .book-scene{margin-inline:auto}
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .ia-hero-band{flex-direction:column;gap:1.5rem}
+  #poesie .card-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  .card-grid{grid-template-columns:1fr!important}
+  .aitem{grid-template-columns:1fr;gap:.5rem}
+  .nl-grid{grid-template-columns:1fr;gap:3rem}
+  .fg{grid-template-columns:1fr;gap:2.5rem}
+  .fb{flex-direction:column;gap:.5rem;text-align:center}
+  .stats-inner{flex-wrap:wrap}
+  .stat{flex:1 1 40%;border-bottom:1px solid var(--border)}
+  .hero-actions{flex-direction:column;max-width:280px}
+  .hero-actions .btn{justify-content:center}
+  .modal-box{padding:2rem 1.5rem;border-radius:12px}
+}
+@media(max-width:480px){
+  .logo-name{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+/* =====================================================================
+   ANALYTICS CONSENT BANNER
+   ===================================================================== */
+#consent-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 8000;
+  background: var(--surface, #131116);
+  border-top: 1px solid var(--line, rgba(255,255,255,.065));
+  padding: 1.25rem clamp(1.25rem,5vw,3.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  box-shadow: 0 -8px 40px rgba(0,0,0,.5);
+  transform: translateY(100%);
+  transition: transform .4s cubic-bezier(.16,1,.3,1);
+}
+#consent-banner.show { transform: translateY(0); }
+.cb-text {
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: .8rem;
+  color: var(--mist, #9990A8);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 200px;
+}
+.cb-text a {
+  color: var(--gold, #C9A84C);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cb-btns {
+  display: flex;
+  gap: .75rem;
+  flex-shrink: 0;
+}
+.cb-accept {
+  background: var(--gold, #C9A84C);
+  color: #080709;
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .55rem 1.4rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+}
+.cb-accept:hover { background: #E8C870; transform: translateY(-1px); }
+.cb-decline {
+  background: transparent;
+  color: var(--fog, #625E6E);
+  font-family: var(--sans, 'Outfit', sans-serif);
+  font-size: .78rem;
+  padding: .55rem 1.2rem;
+  border-radius: 100px;
+  border: 1px solid var(--line, rgba(255,255,255,.065));
+  cursor: pointer;
+  transition: color .2s, border-color .2s;
+}
+.cb-decline:hover { color: var(--snow, #F0EDF8); border-color: rgba(255,255,255,.15); }
+</style>
+
+<!-- =====================================================================
+     GOOGLE ANALYTICS 4
+     INSTRUCTIONS :
+     1. Va sur analytics.google.com
+     2. Créer une propriété → Flux de données Web → entre ton URL
+     3. Copie ton ID de mesure (format : G-XXXXXXXXXX)
+     4. Remplace G-XXXXXXXXXX ci-dessous par ton vrai ID
+     ===================================================================== -->
+<script>
+  /* GA4 - charge seulement si l'utilisateur a consenti */
+  window.GA_ID = 'G-XXXXXXXXXX'; /* ← REMPLACEZ PAR VOTRE VRAI ID */
+
+  function loadGA() {
+    if (window._gaLoaded) return;
+    window._gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', window.GA_ID, {
+      anonymize_ip: true,          /* RGPD : anonymise les IPs */
+      cookie_flags: 'SameSite=None;Secure',
+      send_page_view: true,
+    });
+    window._gtag = gtag;
+  }
+
+  /* Vérifier consentement existant */
+  (function(){
+    var consent = localStorage.getItem('ga_consent');
+    if (consent === 'accepted') loadGA();
+  })();
+</script>
+</head>
+<body>
+<div class="cr-ribbon" aria-label="Copyright">
+  <span data-fr="© Fabrice Fils-Aimé · Tous droits réservés" data-en="© Fabrice Fils-Aimé · All rights reserved">© Fabrice Fils-Aimé · Tous droits réservés</span>
+</div>
+
+
+<!-- ── CONSENT BANNER ── -->
+<div id="consent-banner" role="region" aria-label="Cookies et confidentialité">
+  <p class="cb-text" id="cb-text"
+    data-fr="Ce site utilise des cookies Google Analytics pour mesurer l'audience et améliorer votre expérience. Ces cookies ne collectent aucune donnée personnelle identifiable et ne sont jamais vendus. Vous pouvez refuser - le site fonctionnera parfaitement sans."
+    data-en="This site uses Google Analytics cookies to measure audience and improve your experience. These cookies collect no personally identifiable data and are never sold. You can decline - the site works perfectly without them.">
+    Ce site utilise des cookies Google Analytics pour mesurer l'audience et améliorer votre expérience. Ces cookies ne collectent aucune donnée personnelle identifiable et ne sont jamais vendus. Vous pouvez refuser - le site fonctionnera parfaitement sans.
+  </p>
+  <div class="cb-btns">
+    <button class="cb-decline" id="cb-decline" data-fr="Refuser les cookies" data-en="Decline cookies">Refuser les cookies</button>
+    <button class="cb-accept"  id="cb-accept"  data-fr="Accepter les cookies" data-en="Accept cookies">Accepter les cookies</button>
+  </div>
+</div>
+
+<a href="#main" class="skip">Aller au contenu principal</a>
+
+<!-- CURSOR -->
+<div class="cur" id="cur"></div>
+<div class="cur-dot" id="curDot"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-f">F</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ============================================================ HEADER -->
+<header id="hdr">
+  <div class="hdr">
+    <a href="#hero" class="logo" aria-label="Fabrice Fils-Aimé - Accueil">
+      <div class="logo-badge">F</div>
+      <span style="display:flex;flex-direction:column;gap:1px">
+        <span class="logo-name">Fabrice Fils-Aimé</span>
+        <span style="font-family:var(--mono);font-size:.48rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fog);line-height:1">Modern Thinker 2.0</span>
+      </span>
+    </a>
+
+    <nav class="dn" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#hero"      class="nl" data-fr="Accueil"   data-en="Home">Accueil</a></li>
+        <li><a href="#apropos"   class="nl" data-fr="À propos"  data-en="About">Notre équipe</a></li>
+        <li><a href="#livre"     class="nl" data-fr="Le Livre"  data-en="The Book">Le Livre</a></li>
+        <li class="dd">
+          <button class="nl dd-btn" aria-expanded="false" aria-haspopup="true"
+            data-fr="Écrits" data-en="Writings">
+            Écrits <span class="dd-arr">›</span>
+          </button>
+          <ul class="dd-menu">
+            <li><a href="#reflexions" data-fr="Réflexions" data-en="Reflections">Réflexions</a></li>
+            <li><a href="#poesie"     data-fr="Poésie"      data-en="Poetry">Poésie</a></li>
+            <li><a href="#essais"     data-fr="Essais"     data-en="Essays">Essais</a></li>
+            <li><a href="#ia"         data-fr="IA &amp; Science" data-en="AI &amp; Science">IA &amp; Science</a></li>
+          </ul>
+        </li>
+        <li><a href="#actualites"   class="nl" data-fr="Actualités"    data-en="News">Actualités</a></li>
+        <li><a href="#recherches"   class="nl" data-fr="Le Labo"      data-en="The Lab">Le Labo</a></li>
+        <li><a href="#journey"      class="nl" data-fr="Parcours"          data-en="Journey">Parcours</a></li>
+        <li><a href="#manifeste"    class="nl" data-fr="Pourquoi j'écris" data-en="Why I Write">Pourquoi j'écris</a></li>
+        <li><a href="#collaboration" class="nl" data-fr="Collaboration" data-en="Collaboration">Collaboration</a></li>
+        <li><a href="#newsletter"   class="nl cta" data-fr="Newsletter" data-en="Newsletter">Newsletter</a></li>
+      </ul>
+    </nav>
+
+    <div class="hctrls">
+      <button class="hbtn" id="langBtn" aria-label="FR → EN → ES" title="Cycle: FR → EN → ES → FR"><span id="langLbl">EN</span></button>
+      <button class="hbtn" id="themeBtn" aria-label="Mode sombre/clair">◐</button>
+      <button class="hbtn mbtn" id="menuBtn" aria-expanded="false" aria-controls="mmenu" aria-label="Menu">
+        <span class="bur"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div id="mmenu" role="dialog" aria-modal="true" aria-label="Menu mobile">
+  <ul class="mml">
+    <li><a href="#hero"       data-fr="Accueil"        data-en="Home">Accueil</a></li>
+    <li><a href="#apropos"    data-fr="À propos"       data-en="About">Notre équipe</a></li>
+    <li><a href="#livre"      data-fr="Le Livre"       data-en="The Book">Le Livre</a></li>
+    <li><a href="#reflexions" data-fr="Réflexions"     data-en="Reflections">Réflexions</a></li>
+    <li><a href="#poesie"     data-fr="Poésie"      data-en="Poetry">Poésie</a></li>
+    <li><a href="#essais"     data-fr="Essais"         data-en="Essays">Essais</a></li>
+    <li><a href="#ia"         data-fr="IA &amp; Science" data-en="AI &amp; Science">IA &amp; Science</a></li>
+    <li><a href="#actualites"    data-fr="Actualités"     data-en="News">Actualités</a></li>
+    <li><a href="#recherches"    data-fr="Le Labo"       data-en="The Lab">Le Labo</a></li>
+    <li><a href="#journey"      data-fr="Parcours"           data-en="Journey">Parcours</a></li>
+    <li><a href="#manifeste"     data-fr="Pourquoi j'écris"  data-en="Why I Write">Pourquoi j'écris</a></li>
+    <li><a href="#collaboration" data-fr="Collaboration"  data-en="Collaboration">Collaboration</a></li>
+    <li><a href="#newsletter" class="mcta" data-fr="Newsletter" data-en="Newsletter">Newsletter →</a></li>
+  </ul>
+</div>
+
+<!-- ============================================================ MAIN -->
+<main id="main">
+
+  <!-- ── HERO ── -->
+  <section id="hero" style="padding-block:0">
+    <div class="hero-bg">
+      <div class="orb1"></div><div class="orb2"></div>
+      <div class="hero-lines"></div>
+    </div>
+    <div class="hero-ghost" aria-hidden="true">É</div>
+    <div class="wrap hero-inner">
+      <p class="hero-tag" data-fr="Modern Thinker 2.0 · Écrivain · Éditeur · IA Enthusiast" data-en="Modern Thinker 2.0 · Writer · Editor · AI Enthusiast">Modern Thinker 2.0 · Écrivain · Éditeur · IA Enthusiast</p>
+      <h1 class="hero-title">
+        <span data-fr="L'art de" data-en="The art of">L'art de</span><br>
+        <em data-fr="penser" data-en="thinking">penser</em><br>
+        <span class="alt" data-fr="à voix haute." data-en="out loud.">à voix haute.</span>
+      </h1>
+      <p class="hero-sub"
+        data-fr="Écrits, réflexions, poésie - et les grandes questions qui façonnent notre époque, de l'intelligence humaine à l'intelligence artificielle."
+        data-en="Writings, reflections, poetry - and the great questions shaping our era, from human intelligence to artificial intelligence.">
+        Écrits, réflexions, poésie - et les grandes questions qui façonnent notre époque, de l'intelligence humaine à l'intelligence artificielle.
+      </p>
+      <div class="hero-actions">
+        <a href="#livre" class="btn btn-gold" data-fr="Découvrir Énigme" data-en="Discover Énigme">Découvrir Énigme</a>
+        <a href="#reflexions" class="btn btn-ghost" data-fr="Lire les écrits" data-en="Read the writings">Lire les écrits</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-track"></div>
+      <span data-fr="Défiler" data-en="Scroll">Défiler</span>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat rv">
+        <span class="stat-n">699</span>
+        <span class="stat-l" data-fr="TEF Canada · C2 · Score parfait" data-en="TEF Canada · C2 · Perfect score">TEF Canada · C2 · Score parfait</span>
+      </div>
+      <div class="stat rv" style="--d:.1s">
+        <span class="stat-n">7+</span>
+        <span class="stat-l" data-fr="Ans d'expérience éditoriale" data-en="Years of editorial experience">Ans d'expérience éditoriale</span>
+      </div>
+      <div class="stat rv" style="--d:.2s">
+        <span class="stat-n">3</span>
+        <span class="stat-l" data-fr="Langues · FR · EN · Créole" data-en="Languages · FR · EN · Creole">Langues · FR · EN · Créole</span>
+      </div>
+      <div class="stat rv" style="--d:.3s">
+        <span class="stat-n">∞</span>
+        <span class="stat-l" data-fr="Idées à explorer" data-en="Ideas to explore">Idées à explorer</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── À PROPOS ── -->
+  <section id="apropos">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="eyebrow rv" data-fr="Notre équipe" data-en="Our Team">Notre équipe</div>
+          <h2 class="sec-title rv" style="--d:.05s"
+            data-fr="Rédacteur, correcteur<br>et éditeur <em>multilingue</em>."
+            data-en="Writer, editor<br>and <em>multilingual</em> copy editor.">
+            Rédacteur, correcteur<br>et éditeur <em>multilingue</em>.
+          </h2>
+          <p class="body-p rv" style="--d:.1s"
+            data-fr="Fabrice Fils-Aimé est un rédacteur, correcteur et éditeur multilingue possédant plus de onze ans d'expérience en écriture, révision et encadrement éditorial. Il travaille en français, anglais et créole haïtien, avec une attention particulière portée à la clarté, à la rigueur linguistique et au respect du lectorat."
+            data-en="Fabrice Fils-Aimé is a multilingual writer, copy editor and editorial consultant with over eleven years of experience in writing, revision and editorial mentorship. He works in French, English and Haitian Creole, with particular attention to clarity, linguistic rigour and respect for the reader.">
+            Fabrice Fils-Aimé est un rédacteur, correcteur et éditeur multilingue possédant plus de onze ans d'expérience en écriture, révision et encadrement éditorial. Il travaille en français, anglais et créole haïtien, avec une attention particulière portée à la clarté, à la rigueur linguistique et au respect du lectorat.
+          </p>
+          <p class="body-p rv" style="--d:.15s"
+            data-fr="Il a occupé pendant plus de six ans le rôle de rédacteur et Chief Copy Editor du journal étudiant Intermed, publication de la Faculté de médecine et des sciences de la santé. À ce titre, il était responsable de la qualité linguistique et stylistique des textes, de la cohérence éditoriale, de la correction approfondie et de l'élaboration de normes rédactionnelles. Il a également coordonné une équipe de contributeurs et contribué à professionnaliser durablement les pratiques éditoriales de la publication."
+            data-en="For several years, he served as writer and Chief Copy Editor of the student journal Intermed, published by the Faculty of Medicine and Health Sciences. In this role, he was responsible for linguistic and stylistic quality, editorial coherence, thorough correction and the development of editorial standards. He also coordinated a team of contributors and contributed to lastingly professionalizing the publication's editorial practices.">
+            Il a occupé pendant plus de six ans le rôle de rédacteur et Chief Copy Editor du journal étudiant Intermed, publication de la Faculté de médecine et des sciences de la santé. À ce titre, il était responsable de la qualité linguistique et stylistique des textes, de la cohérence éditoriale, de la correction approfondie et de l'élaboration de normes rédactionnelles. Il a également coordonné une équipe de contributeurs et contribué à professionnaliser durablement les pratiques éditoriales de la publication.
+          </p>
+          <div class="about-credential rv" style="--d:.2s">
+            <div class="cred-score">699 / 699</div>
+            <div class="cred-label"
+              data-fr="TEF Canada · Expression écrite &amp; compréhension orale · Niveau C2"
+              data-en="TEF Canada · Written expression &amp; oral comprehension · C2 level">
+              TEF Canada · Expression écrite &amp; compréhension orale · Niveau C2
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right rv" style="--d:.1s">
+          <blockquote class="about-quote"
+            data-fr="«&nbsp;Sa maîtrise exceptionnelle du français écrit est attestée par un score parfait - une grande précision linguistique et une solide capacité d'analyse.&nbsp;»"
+            data-en="«&nbsp;His exceptional command of written French is evidenced by a perfect score - reflecting great linguistic precision and a solid capacity for analysis and reformulation.&nbsp;»">
+            «&nbsp;Sa maîtrise exceptionnelle du français écrit est attestée par un score parfait - une grande précision linguistique et une solide capacité d'analyse.&nbsp;»
+          </blockquote>
+
+          <div class="role-list">
+            <div class="role-item">
+              <div>
+                <div class="role-name" data-fr="Correcteur en chef & Éditeur · 2015–2021" data-en="Correcteur en chef & Éditeur · 2015–2021">Correcteur en chef & Éditeur · 2015–2021</div>
+                <div class="role-org">Journal Intermed</div>
+              </div>
+              <span class="role-tag" data-fr="Éditorial" data-en="Editorial">Éditorial</span>
+            </div>
+            <div class="role-item">
+              <div>
+                <div class="role-name" data-fr="Auteur - Énigme" data-en="Author - Énigme">Auteur - Énigme</div>
+                <div class="role-org">Amazon · Avril 2024</div>
+              </div>
+              <span class="role-tag" data-fr="Publication" data-en="Publication">Publication</span>
+            </div>
+            <div class="role-item">
+              <div>
+                <div class="role-name" data-fr="Rédacteur multilingue" data-en="Multilingual writer">Rédacteur multilingue</div>
+                <div class="role-org">FR · EN · Créole haïtien</div>
+              </div>
+              <span class="role-tag" data-fr="7+ ans" data-en="7+ yrs">7+ ans</span>
+            </div>
+            <div class="role-item">
+              <div>
+                <div class="role-name" data-fr="Chercheur indépendant - IA" data-en="Independent researcher - AI">Chercheur indépendant - IA</div>
+                <div class="role-org">Modern Thinker 2.0 · En cours</div>
+              </div>
+              <span class="role-tag" style="border-color:rgba(88,144,216,.3);color:var(--blue,#5890D8)">Recherche</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── LE LIVRE ── -->
+  <section id="livre">
+    <div class="wrap">
+      <div class="book-layout" style="align-items:center">
+        <!-- 3D Book -->
+        <div class="book-scene rv">
+          <div class="book3d" id="book3d" role="img" aria-label="Couverture du livre Énigme de Fabrice Fils-Aimé">
+            <div class="bsp"><span>Énigme</span><span>Fabrice Fils-Aimé</span></div>
+            <div class="bf">
+              <!--
+                COUVERTURE : nommez enigme-couverture.jpg, placez dans le même dossier,
+                puis décommentez la ligne img ci-dessous :
+                <img src="enigme-couverture.jpg" alt="Couverture Énigme"
+                     style="width:100%;height:100%;object-fit:cover;display:block;border-radius:2px 5px 5px 2px;"
+                     onerror="this.style.display='none';document.getElementById('coverFallback').style.display='flex'" />
+              -->
+              <div id="coverFallback" style="display:flex;flex-direction:column;justify-content:space-between;padding:1.8rem 1.5rem;height:100%;position:relative">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,75,.15) 0%,transparent 50%);pointer-events:none;border-radius:2px 5px 5px 2px"></div>
+                <div><div class="bf-author">Fabrice Fils-Aimé</div></div>
+                <div class="bf-title">Énigme</div>
+                <div class="bf-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="book-shadow"></div>
+        </div>
+
+        <!-- Teaser -->
+        <div class="rv" style="--d:.1s">
+          <div class="eyebrow" data-fr="Premier Roman · Avril 2024" data-en="Debut Novel · April 2024">Premier Roman · Avril 2024</div>
+          <h2 class="sec-title" style="margin-bottom:.75rem">Énigme</h2>
+          <p class="body-p" style="margin-bottom:2rem"
+            data-fr="Elsie longe un rivage hanté de tambours et de sirènes. Une novella dense et sensorielle sur l'identité, le désir et les secrets que nous portons sans le savoir."
+            data-en="Elsie walks a shoreline haunted by drums and sirens. A dense, sensory novella about identity, desire, and the secrets we carry unknowingly.">
+            Elsie longe un rivage hanté de tambours et de sirènes. Une novella dense et sensorielle sur l'identité, le désir et les secrets que nous portons sans le savoir.
+          </p>
+          <blockquote style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--mist);line-height:2;border-left:2px solid var(--gold);padding-left:1.25rem;margin-bottom:2rem"
+            data-fr="«&nbsp;Son corps obéissait sans résistance aux vagues de la mer, cette grande berceuse qui gardait enfouis en elle, les horreurs, les mystères et les trésors de l'humanité.&nbsp;»"
+            data-en="«&nbsp;His body yielded without resistance to the waves of the sea, that great lullaby which kept buried within it the horrors, mysteries and treasures of humanity.&nbsp;»">
+            «&nbsp;Son corps obéissait sans résistance aux vagues de la mer, cette grande berceuse qui gardait enfouis en elle, les horreurs, les mystères et les trésors de l'humanité.&nbsp;»
+          </blockquote>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap">
+            <button class="btn btn-gold" onclick="openBookPage()"
+              data-fr="Découvrir le livre →" data-en="Discover the book →">Découvrir le livre →</button>
+            <button class="btn btn-ghost btn-sm" onclick="redirectAmazon()"
+              data-fr="Commander sur Amazon" data-en="Order on Amazon">Commander sur Amazon</button>
+          </div>
+          <p class="amazon-hint" id="aHint"
+            data-fr="Détection de votre pays…" data-en="Detecting your country…">Détection de votre pays…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- ── RÉFLEXIONS ── -->
+  <section id="reflexions">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="01 - Réflexions" data-en="01 - Reflections">01 - Réflexions</div>
+        <h2 class="sec-title" data-fr="Pensées &amp; introspections" data-en="Thoughts &amp; introspections">Pensées &amp; introspections</h2>
+      </div>
+      <div class="card-grid rv" style="--d:.1s">
+        <div class="wcard large" onclick="openArticle('r1')" tabindex="0" role="button" aria-label="Le silence comme langage">
+          <div class="ctag t-ref" data-fr="Réflexion" data-en="Reflection">Réflexion</div>
+          <h3 class="ctitle" data-fr="Le silence comme langage" data-en="Silence as language">Le silence comme langage</h3>
+          <p class="cexcerpt" data-fr="Il existe un paradoxe au cœur du silence. On le croit vide, creux, absence de sens. Mais qui y a vraiment prêté attention sait qu'il est saturé de tout ce que le langage ne parvient pas à contenir." data-en="There is a paradox at the heart of silence. We believe it empty, hollow - yet whoever has truly paid attention knows it is saturated with everything language cannot contain.">Il existe un paradoxe au cœur du silence. On le croit vide, creux, absence de sens. Mais qui y a vraiment prêté attention sait qu'il est saturé de tout ce que le langage ne parvient pas à contenir.</p>
+          <div class="cfooter">
+            <span>Fév. 2025 · 8 min</span>
+            <span class="cread-more">Lire <span>→</span></span>
+          </div>
+        </div>
+        <div class="wcard" onclick="openArticle('r2')" tabindex="0" role="button" aria-label="Mélancolie productive">
+          <div class="ctag t-ref" data-fr="Réflexion" data-en="Reflection">Réflexion</div>
+          <h3 class="ctitle" data-fr="Mélancolie productive" data-en="Productive melancholy">Mélancolie productive</h3>
+          <p class="cexcerpt" data-fr="Plaidoyer pour une tristesse que la modernité refuse - celle qui creuse, qui transforme, qui mène vers quelque chose de plus grand." data-en="A plea for a sadness modernity refuses - one that excavates, transforms, and leads toward something greater.">Plaidoyer pour une tristesse que la modernité refuse - celle qui creuse, qui transforme, qui mène vers quelque chose de plus grand.</p>
+          <div class="cfooter"><span>Oct. 2024 · 7 min</span><span class="cread-more">Lire <span>→</span></span></div>
+        </div>
+        <div class="wcard" onclick="openArticle('r3')" tabindex="0" role="button" aria-label="Ce que les ruines apprennent">
+          <div class="ctag t-ref" data-fr="Réflexion" data-en="Reflection">Réflexion</div>
+          <h3 class="ctitle" data-fr="Ce que les ruines apprennent" data-en="What ruins teach">Ce que les ruines apprennent</h3>
+          <p class="cexcerpt" data-fr="Les civilisations disparues parlent encore. Leurs silences sont les leçons les plus éloquentes sur ce que signifie construire, puis perdre." data-en="Vanished civilizations still speak. Their silences are the most eloquent lessons on what it means to build, then lose.">Les civilisations disparues parlent encore. Leurs silences sont les leçons les plus éloquentes sur ce que signifie construire, puis perdre.</p>
+          <div class="cfooter"><span>Nov. 2024 · 6 min</span><span class="cread-more">Lire <span>→</span></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── POÉSIE ── -->
+  <section id="poesie">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="02 - Poésie" data-en="02 - Poetry">02 - Poésie</div>
+        <h2 class="sec-title" data-fr="Poésie" data-en="Poetry">Poésie</h2>
+      </div>
+      <div class="card-grid rv" style="--d:.1s">
+        <!--
+          ================================================================
+          COMMENT AJOUTER VOS VRAIS POÈMES (section cartes) :
+
+          1. Trouvez dans le JS : p1:{ titleFr:'...'
+          2. Remplacez le titleFr par le vrai titre de votre poème
+          3. Pour l'aperçu (ces 2-3 vers sur la carte), remplacez
+             la ligne data-fr="..." ci-dessous dans le HTML
+          4. Pour le texte complet du modal, modifiez bodyFr dans le JS
+
+          Faites la même chose pour p2 et p3.
+          ================================================================
+        -->
+        <div class="wcard large" onclick="openArticle('p1')" tabindex="0" role="button" style="border-left:2px solid var(--violet)">
+          <div class="ctag t-poe" data-fr="Poème" data-en="Poem">Poème</div>
+          <h3 class="ctitle"
+            data-fr="[Titre poème 1 - à remplacer dans le JS]"
+            data-en="[Poem 1 title - replace in JS]">
+            [Titre poème 1 - à remplacer dans le JS]
+          </h3>
+          <div class="poem-lines"
+            data-fr="[Premiers vers de votre poème 1] /<br>[Remplacez data-fr ici dans le HTML] /<br>[Et bodyFr dans le JS]…"
+            data-en="[First lines of your poem 1] /<br>[Replace data-en here in HTML] /<br>[And bodyEn in JS]…">
+            [Premiers vers de votre poème 1] /<br>[Remplacez data-fr ici dans le HTML] /<br>[Et bodyFr dans le JS]…
+          </div>
+          <span class="cread-more" data-fr="Lire le poème →" data-en="Read the poem →">Lire le poème →</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px;background:var(--border)">
+          <div class="wcard" onclick="openArticle('p2')" tabindex="0" role="button" style="flex:1">
+            <div class="ctag t-poe" data-fr="Poème" data-en="Poem">Poème</div>
+            <h3 class="ctitle"
+              data-fr="[Titre poème 2 - à remplacer dans le JS]"
+              data-en="[Poem 2 title - replace in JS]">
+              [Titre poème 2]
+            </h3>
+            <div class="poem-lines"
+              data-fr="[Premiers vers - data-fr ici] /<br>[bodyFr dans le JS]…"
+              data-en="[First lines - data-en here] /<br>[bodyEn in JS]…">
+              [Premiers vers - data-fr ici] /<br>[bodyFr dans le JS]…
+            </div>
+          </div>
+          <div class="wcard" onclick="openArticle('p3')" tabindex="0" role="button" style="flex:1">
+            <div class="ctag t-poe" data-fr="Poème" data-en="Poem">Poème</div>
+            <h3 class="ctitle"
+              data-fr="[Titre poème 3 - à remplacer dans le JS]"
+              data-en="[Poem 3 title - replace in JS]">
+              [Titre poème 3]
+            </h3>
+            <div class="poem-lines"
+              data-fr="[Premiers vers - data-fr ici] /<br>[bodyFr dans le JS]…"
+              data-en="[First lines - data-en here] /<br>[bodyEn in JS]…">
+              [Premiers vers - data-fr ici] /<br>[bodyFr dans le JS]…
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── ESSAIS ── -->
+  <section id="essais">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="03 - Essais" data-en="03 - Essays">03 - Essais</div>
+        <h2 class="sec-title" data-fr="Arguments construits,<br>idées défendues." data-en="Constructed arguments,<br>defended ideas.">Arguments construits,<br>idées défendues.</h2>
+      </div>
+      <div class="card-grid g2 rv" style="--d:.1s">
+        <div class="wcard large" onclick="openArticle('e1')" tabindex="0" role="button">
+          <div class="ctag t-ess" data-fr="Essai" data-en="Essay">Essai</div>
+          <h3 class="ctitle" data-fr="L'art de l'inachèvement" data-en="The art of incompleteness">L'art de l'inachèvement</h3>
+          <p class="cexcerpt" data-fr="La perfection est menteuse. Elle nous promet un point d'arrivée qui n'existe pas. Plaidoyer pour l'inachèvement comme forme de courage créatif." data-en="Perfection is a liar. It promises us a destination that does not exist. A plea for incompleteness as a form of creative courage.">La perfection est menteuse. Elle nous promet un point d'arrivée qui n'existe pas. Plaidoyer pour l'inachèvement comme forme de courage créatif.</p>
+          <div class="cfooter"><span>Jan. 2025 · 12 min</span><span class="cread-more">Lire <span>→</span></span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:1px;background:var(--border)">
+          <div class="wcard" onclick="openArticle('e2')" tabindex="0" role="button" style="flex:1">
+            <div class="ctag t-ess" data-fr="Essai" data-en="Essay">Essai</div>
+            <h3 class="ctitle" data-fr="Écrire contre l'oubli" data-en="Writing against forgetting">Écrire contre l'oubli</h3>
+            <p class="cexcerpt" data-fr="Pourquoi écrivons-nous ? Non pour être lus - mais pour prouver que nous avons existé dans une lumière précise." data-en="Why do we write? Not to be read - but to prove we existed in a precise light.">Pourquoi écrivons-nous ? Non pour être lus - mais pour prouver que nous avons existé dans une lumière précise.</p>
+            <div class="cfooter"><span>Sep. 2024 · 9 min</span></div>
+          </div>
+          <div class="wcard" onclick="openArticle('e3')" tabindex="0" role="button" style="flex:1">
+            <div class="ctag t-ess" data-fr="Essai" data-en="Essay">Essai</div>
+            <h3 class="ctitle" data-fr="La solitude comme école" data-en="Solitude as a school">La solitude comme école</h3>
+            <p class="cexcerpt" data-fr="La solitude n'est pas un manque. C'est un espace d'apprentissage que la société moderne a rendu presque impossible à habiter." data-en="Solitude is not a lack. It is a learning space modern society has made nearly impossible to inhabit.">La solitude n'est pas un manque. C'est un espace d'apprentissage que la société moderne a rendu presque impossible à habiter.</p>
+            <div class="cfooter"><span>Août 2024 · 10 min</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── IA & SCIENCE ── -->
+  <section id="ia">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="04 - IA, Tech &amp; Science" data-en="04 - AI, Tech &amp; Science">04 - IA, Tech &amp; Science</div>
+        <h2 class="sec-title" data-fr="Comprendre les machines<br>pour mieux comprendre l'humain." data-en="Understanding machines<br>to better understand the human.">Comprendre les machines<br>pour mieux comprendre l'humain.</h2>
+      </div>
+      <div class="ia-hero-band rv" style="--d:.05s">
+        <div class="ia-big-icon">🧠</div>
+        <div>
+          <h3 class="ia-intro-title" data-fr="L'IA révèle ce qu'elle ne peut pas être" data-en="AI reveals what it cannot be">L'IA révèle ce qu'elle ne peut pas être</h3>
+          <p class="ia-intro-sub" data-fr="L'intelligence artificielle ne remplace pas la pensée humaine - elle en révèle les angles morts, les automatismes, et parfois la beauté inattendue. Une exploration de ce que les machines nous apprennent sur nous-mêmes." data-en="Artificial intelligence doesn't replace human thought - it reveals its blind spots, automatisms, and sometimes unexpected beauty. An exploration of what machines teach us about ourselves.">L'intelligence artificielle ne remplace pas la pensée humaine - elle en révèle les angles morts, les automatismes, et parfois la beauté inattendue. Une exploration de ce que les machines nous apprennent sur nous-mêmes.</p>
+        </div>
+      </div>
+      <div class="card-grid rv" style="--d:.15s">
+        <div class="wcard" onclick="openArticle('ia1')" tabindex="0" role="button">
+          <div class="ctag t-ia">IA</div>
+          <h3 class="ctitle" data-fr="Penser avec les machines" data-en="Thinking with machines">Penser avec les machines</h3>
+          <p class="cexcerpt" data-fr="Si une machine peut compléter ma pensée, qu'est-ce que cela dit de ma pensée ? Une question qui dérange - et qui libère." data-en="If a machine can complete my thought, what does that say about my thought? A question that disturbs - and liberates.">Si une machine peut compléter ma pensée, qu'est-ce que cela dit de ma pensée ? Une question qui dérange - et qui libère.</p>
+          <div class="cfooter"><span>Nov. 2024 · 10 min</span><span class="cread-more">Lire <span>→</span></span></div>
+        </div>
+        <div class="wcard" tabindex="0" role="button">
+          <div class="ctag t-ia">Science</div>
+          <h3 class="ctitle" data-fr="La biologie de l'intuition" data-en="The biology of intuition">La biologie de l'intuition</h3>
+          <p class="cexcerpt" data-fr="Que se passe-t-il dans notre cerveau quand nous «savons» sans savoir pourquoi ? La neuroscience commence enfin à répondre." data-en="What happens in our brain when we 'know' without knowing why? Neuroscience is finally starting to answer.">Que se passe-t-il dans notre cerveau quand nous «savons» sans savoir pourquoi ? La neuroscience commence enfin à répondre.</p>
+          <div class="cfooter"><span>Déc. 2024 · 8 min</span></div>
+        </div>
+        <div class="wcard" tabindex="0" role="button">
+          <div class="ctag t-ia">Cosmologie</div>
+          <h3 class="ctitle" data-fr="L'univers comme métaphore" data-en="The universe as metaphor">L'univers comme métaphore</h3>
+          <p class="cexcerpt" data-fr="Les découvertes cosmologiques récentes ne sont pas que scientifiques - elles reformulent notre rapport à l'existence et au temps." data-en="Recent cosmological discoveries aren't only scientific - they reformulate our relationship to existence and time.">Les découvertes cosmologiques récentes ne sont pas que scientifiques - elles reformulent notre rapport à l'existence et au temps.</p>
+          <div class="cfooter"><span>Jan. 2025 · 7 min</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── RECHERCHES IA ── -->
+  <section id="recherches" style="background:var(--bg2,#0E0C10)">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="05 - Le Labo" data-en="05 - The Lab">05 - Le Labo</div>
+        <h2 class="sec-title"
+          data-fr="Observations &amp; explorations<br>sur l'IA."
+          data-en="Observations &amp; explorations<br>on AI.">
+          Observations &amp; explorations<br>sur l'IA.
+        </h2>
+      </div>
+
+      <!-- Intro + citation box -->
+      <div class="rv" style="--d:.05s;background:var(--surface,#131116);border:1px solid var(--border,rgba(255,255,255,.065));border-radius:14px;padding:2.5rem 3rem;margin-bottom:3rem;display:flex;gap:2.5rem;align-items:flex-start">
+        <div style="font-size:2.5rem;flex-shrink:0;padding-top:.2rem">🔭</div>
+        <div>
+          <h3 style="font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.65rem);color:var(--snow);margin-bottom:.75rem"
+            data-fr="Chercheur indépendant - sans frontières disciplinaires"
+            data-en="Independent researcher - without disciplinary boundaries">
+            Chercheur indépendant - sans frontières disciplinaires
+          </h3>
+          <p style="font-family:var(--sans);font-size:.88rem;color:var(--fog);line-height:1.8;max-width:60ch"
+            data-fr="Ces travaux documentent des observations, des expériences et des hypothèses sur le comportement des modèles de langage - avec la rigueur d'un éditeur et la curiosité d'un penseur libre. Pas de formation technique requise pour observer et penser."
+            data-en="This work documents observations, experiments and hypotheses on the behavior of language models - with the rigour of an editor and the curiosity of a free thinker. No technical background required to observe and think.">
+            Ces travaux documentent des observations, des expériences et des hypothèses sur le comportement des modèles de langage - avec la rigueur d'un éditeur et la curiosité d'un penseur libre. Pas de formation technique requise pour observer et penser.
+          </p>
+          <!-- CITATION BOX - pour que les lecteurs puissent citer votre travail -->
+          <div style="margin-top:1.5rem;padding:1.1rem 1.4rem;background:var(--lifted,#1E1C22);border:1px solid var(--border2,rgba(255,255,255,.12));border-left:3px solid #5890D8;border-radius:0 8px 8px 0">
+            <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:#5890D8;margin-bottom:.5rem"
+              data-fr="Comment citer ce travail" data-en="How to cite this work">
+              Comment citer ce travail
+            </div>
+            <div style="font-family:var(--mono);font-size:.72rem;color:var(--mist);line-height:1.85" id="citeExample">
+              Fils-Aimé, Fabrice. (2025). "Titre de la recherche." <em>fabricefilsaime.com</em>. Consulté le JJ/MM/AAAA. Disponible sur : https://fabricefilsaime.com
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Research cards -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden" class="rv" style="--d:.15s">
+
+        <div class="wcard" onclick="openArticle('rec1')" tabindex="0" role="button">
+          <div class="ctag" style="background:rgba(88,144,216,.1);color:#5890D8" data-fr="Recherche IA" data-en="AI Research">Recherche IA</div>
+          <h3 class="ctitle"
+            data-fr="Variabilité temporelle des LLM : observations comparatives"
+            data-en="Temporal variability of LLMs: comparative observations">
+            Variabilité temporelle des LLM : observations comparatives
+          </h3>
+          <p class="cexcerpt"
+            data-fr="Comment les réponses d'un même modèle varient-elles selon le moment, la langue, et le contexte ? Des observations systématiques sur des patterns reproductibles - sans code, juste de la méthode."
+            data-en="How do responses from the same model vary according to time, language, and context? Systematic observations on reproducible patterns - no code, just method.">
+            Comment les réponses d'un même modèle varient-elles selon le moment, la langue, et le contexte ? Des observations systématiques sur des patterns reproductibles.
+          </p>
+          <div class="cfooter">
+            <span>2025</span>
+            <span class="cread-more">Lire <span>→</span></span>
+          </div>
+        </div>
+
+        <div class="wcard" onclick="openArticle('rec2')" tabindex="0" role="button">
+          <div class="ctag" style="background:rgba(88,144,216,.1);color:#5890D8" data-fr="Recherche IA" data-en="AI Research">Recherche IA</div>
+          <h3 class="ctitle"
+            data-fr="Validation multilingue des biais des modèles"
+            data-en="Multilingual validation of model biases">
+            Validation multilingue des biais des modèles
+          </h3>
+          <p class="cexcerpt"
+            data-fr="Les LLM se comportent-ils différemment en français, anglais et créole ? Une expérience de validation croisée sur les biais linguistiques et culturels - exploitant une compétence trilingue rare."
+            data-en="Do LLMs behave differently in French, English and Creole? A cross-validation experiment on linguistic and cultural biases - leveraging a rare trilingual competence.">
+            Les LLM se comportent-ils différemment en français, anglais et créole ? Une expérience de validation croisée sur les biais linguistiques et culturels.
+          </p>
+          <div class="cfooter">
+            <span>2025</span>
+            <span class="cread-more">Lire <span>→</span></span>
+          </div>
+        </div>
+
+      </div><!-- /research grid -->
+
+      <!-- Coming soon + repo CTA -->
+      <div class="rv" style="--d:.2s;margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden">
+
+        <div style="background:var(--surface);padding:2rem 2.5rem;display:flex;align-items:center;gap:1.5rem">
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:rgba(90,143,224,.12);border:1px solid rgba(90,143,224,.25);display:flex;align-items:center;justify-content:center;font-size:1.3rem">🔬</div>
+          <div>
+            <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:.35rem"
+              data-fr="En préparation" data-en="Coming soon">En préparation</div>
+            <p style="font-family:var(--sans);font-size:.88rem;color:var(--mist);line-height:1.6"
+              data-fr="Nouvelles expérimentations en cours. Résultats publiés dès validation."
+              data-en="New experiments underway. Results published upon validation.">
+              Nouvelles expérimentations en cours. Résultats publiés dès validation.
+            </p>
+          </div>
+        </div>
+
+        <div style="background:var(--deep);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem">
+          <div>
+            <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.35rem"
+              data-fr="Repository ouvert" data-en="Open repository">Repository ouvert</div>
+            <p style="font-family:var(--sans);font-size:.88rem;color:var(--mist);line-height:1.6"
+              data-fr="Protocoles, données brutes et notes de travail disponibles sur GitHub."
+              data-en="Protocols, raw data and working notes available on GitHub.">
+              Protocoles, données brutes et notes de travail disponibles sur GitHub.
+            </p>
+          </div>
+          <a href="https://github.com/fabthebest" target="_blank" rel="noopener noreferrer"
+            style="flex-shrink:0;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;color:var(--snow);background:var(--lifted);border:1px solid var(--border2);padding:.55rem 1.1rem;border-radius:100px;transition:background .2s;white-space:nowrap;text-decoration:none"
+            onmouseover="this.style.background='rgba(255,255,255,.1)'"
+            onmouseout="this.style.background='var(--lifted)'">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <span data-fr="Consulter →" data-en="Consult →">Consulter →</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── ACTUALITÉS ── -->
+  <section id="actualites">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div class="eyebrow" data-fr="05 - Actualités" data-en="05 - News">05 - Actualités</div>
+        <h2 class="sec-title" data-fr="Ce qui retient mon attention" data-en="What holds my attention">Ce qui retient mon attention</h2>
+      </div>
+      <div class="actu-list rv" style="--d:.1s">
+
+        <!-- ============================================================
+          ACTUALITÉS - Remplacez ces items par vos vraies nouvelles.
+          Copiez/collez le bloc <div class="aitem">...</div> pour en ajouter.
+          Badges disponibles : ab-evt (événement), ab-pub (publication),
+          ab-med (médias), ab-bk (livre), ab-rec (recherche)
+          ============================================================ -->
+
+        <div class="aitem">
+          <span class="adate">Avr 2024</span>
+          <div><a href="https://www.amazon.ca/dp/2386170993" target="_blank" rel="noopener" class="atitle" data-fr="Publication d'Énigme - Amazon CA / FR / USA" data-en="Publication of Énigme - Amazon CA / FR / USA">Publication d'Énigme - Amazon CA / FR / USA</a><p class="adesc" data-fr="Premier roman publié et disponible à l'international. 41 pages. ISBN 2386170993." data-en="First novel published and available internationally. 41 pages. ISBN 2386170993.">Premier roman publié et disponible à l'international. 41 pages. ISBN 2386170993.</p></div>
+          <span class="abadge ab-bk" data-fr="Livre" data-en="Book">Livre</span>
+        </div>
+
+        <div class="aitem">
+          <span class="adate">2025</span>
+          <div><a href="#recherches" class="atitle" data-fr="Le Labo - premières observations LLM" data-en="The Lab - first LLM observations">Le Labo - premières observations LLM</a><p class="adesc" data-fr="Premières observations comparatives sur la variabilité temporelle et les biais multilingues des modèles de langage." data-en="First comparative observations on temporal variability and multilingual biases of language models.">Premières observations comparatives sur la variabilité temporelle et les biais multilingues des modèles de langage.</p></div>
+          <span class="abadge ab-rec" data-fr="Le Labo" data-en="The Lab">Le Labo</span>
+        </div>
+
+        <div class="aitem" style="opacity:.45">
+          <span class="adate">-</span>
+          <div><span class="atitle" style="cursor:default" data-fr="[Votre prochaine actualité à ajouter ici]" data-en="[Your next news item to add here]">[Votre prochaine actualité à ajouter ici]</span><p class="adesc" data-fr="Remplacez ce bloc dans le HTML avec vos vraies nouvelles - conférence, publication, entretien, prix, etc." data-en="Replace this block in the HTML with your real news - conference, publication, interview, award, etc.">Remplacez ce bloc dans le HTML avec vos vraies nouvelles - conférence, publication, entretien, prix, etc.</p></div>
+          <span class="abadge" data-fr="À venir" data-en="Coming">À venir</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── COLLABORATION ── -->
+  <section id="collaboration" style="background:var(--bg2,#0E0C10)">
+    <div class="wrap">
+      <div class="rv">
+        <div class="eyebrow" data-fr="Collaboration" data-en="Collaboration">Collaboration</div>
+        <h2 class="sec-title"
+          data-fr="Un projet sérieux à construire ensemble ?"
+          data-en="A serious project to build together?">
+          Un projet sérieux à construire ensemble ?
+        </h2>
+        <p style="font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2vw,1.25rem);color:var(--mist);max-width:55ch;margin-top:.75rem;line-height:1.8"
+          data-fr="Je ne cherche pas des clients. Je cherche des complices - des personnes qui pensent que les bonnes idées méritent d'être construites avec soin."
+          data-en="I'm not looking for clients. I'm looking for collaborators - people who believe good ideas deserve to be built with care.">
+          Je ne cherche pas des clients. Je cherche des complices - des personnes qui pensent que les bonnes idées méritent d'être construites avec soin.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border,rgba(255,255,255,.065));border:1px solid var(--border,rgba(255,255,255,.065));border-radius:2px;overflow:hidden;margin-bottom:3rem" class="rv" style="--d:.1s">
+
+        <!-- Carte 1 - Écriture & Édition -->
+        <div style="background:var(--bg,#080709);padding:2.5rem;transition:background .3s" onmouseover="this.style.background='var(--surface,#131116)'" onmouseout="this.style.background='var(--bg,#080709)'">
+          <div style="font-size:2rem;margin-bottom:1rem">✍️</div>
+          <div style="font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold,#C9A84C);margin-bottom:.75rem"
+            data-fr="Écriture & Édition" data-en="Writing & Editing">Écriture & Édition</div>
+          <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--snow,#F0EDF8);margin-bottom:.75rem;line-height:1.25"
+            data-fr="Correction, révision & rédaction multilingue"
+            data-en="Copy editing, revision & multilingual writing">
+            Correction, révision & rédaction multilingue
+          </h3>
+          <p style="font-family:var(--sans,sans-serif);font-size:.88rem;color:var(--fog,#625E6E);line-height:1.75"
+            data-fr="Disponible pour des mandats de correction, révision stylistique, rédaction ou traduction en français, anglais et créole haïtien. Journaux, revues, essais, contenus académiques ou créatifs."
+            data-en="Available for copy editing, stylistic revision, writing or translation mandates in French, English and Haitian Creole. Journals, reviews, essays, academic or creative content.">
+            Disponible pour des mandats de correction, révision stylistique, rédaction ou traduction en français, anglais et créole haïtien. Journaux, revues, essais, contenus académiques ou créatifs.
+          </p>
+        </div>
+
+        <!-- Carte 2 - Recherche IA -->
+        <div style="background:var(--bg,#080709);padding:2.5rem;transition:background .3s" onmouseover="this.style.background='var(--surface,#131116)'" onmouseout="this.style.background='var(--bg,#080709)'">
+          <div style="font-size:2rem;margin-bottom:1rem">🔬</div>
+          <div style="font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:#5890D8;margin-bottom:.75rem"
+            data-fr="Recherche & IA" data-en="Research & AI">Recherche & IA</div>
+          <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--snow,#F0EDF8);margin-bottom:.75rem;line-height:1.25"
+            data-fr="Observations sur les LLM & perspectives interdisciplinaires"
+            data-en="LLM observations & interdisciplinary perspectives">
+            Observations sur les LLM & perspectives interdisciplinaires
+          </h3>
+          <p style="font-family:var(--sans,sans-serif);font-size:.88rem;color:var(--fog,#625E6E);line-height:1.75"
+            data-fr="Ouvert à des collaborations avec chercheurs, développeurs ou curieux qui souhaitent explorer les angles linguistiques, culturels ou comportementaux des modèles de langage."
+            data-en="Open to collaborations with researchers, developers or curious minds who want to explore linguistic, cultural or behavioral angles of language models.">
+            Ouvert à des collaborations avec chercheurs, développeurs ou curieux qui souhaitent explorer les angles linguistiques, culturels ou comportementaux des modèles de langage.
+          </p>
+        </div>
+
+        <!-- Carte 3 - Projets créatifs -->
+        <div style="background:var(--bg,#080709);padding:2.5rem;transition:background .3s" onmouseover="this.style.background='var(--surface,#131116)'" onmouseout="this.style.background='var(--bg,#080709)'">
+          <div style="font-size:2rem;margin-bottom:1rem">📖</div>
+          <div style="font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet,#9B8EC4);margin-bottom:.75rem"
+            data-fr="Projets créatifs" data-en="Creative projects">Projets créatifs</div>
+          <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--snow,#F0EDF8);margin-bottom:.75rem;line-height:1.25"
+            data-fr="Anthologies, revues littéraires & projets collectifs"
+            data-en="Anthologies, literary journals & collective projects">
+            Anthologies, revues littéraires & projets collectifs
+          </h3>
+          <p style="font-family:var(--sans,sans-serif);font-size:.88rem;color:var(--fog,#625E6E);line-height:1.75"
+            data-fr="Intéressé par des participations à des anthologies, projets d'écriture collective, ou collaborations avec d'autres auteurs et revues littéraires francophones ou anglophones."
+            data-en="Interested in contributing to anthologies, collective writing projects, or collaborations with other authors and francophone or anglophone literary journals.">
+            Intéressé par des participations à des anthologies, projets d'écriture collective, ou collaborations avec d'autres auteurs et revues littéraires francophones ou anglophones.
+          </p>
+        </div>
+
+        <!-- Carte 4 - GitHub & Projets ouverts -->
+        <div style="background:var(--bg,#080709);padding:2.5rem;transition:background .3s;position:relative" onmouseover="this.style.background='var(--surface,#131116)'" onmouseout="this.style.background='var(--bg,#080709)'">
+          <div style="font-size:2rem;margin-bottom:1rem">⚙️</div>
+          <div style="font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage,#7AB8A0);margin-bottom:.75rem"
+            data-fr="Code & Projets ouverts" data-en="Code & Open projects">Code & Projets ouverts</div>
+          <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:clamp(1.1rem,2vw,1.4rem);color:var(--snow,#F0EDF8);margin-bottom:.75rem;line-height:1.25"
+            data-fr="Expérimentations, outils & projets GitHub"
+            data-en="Experiments, tools & GitHub projects">
+            Expérimentations, outils & projets GitHub
+          </h3>
+          <p style="font-family:var(--sans,sans-serif);font-size:.88rem;color:var(--fog,#625E6E);line-height:1.75;margin-bottom:1.25rem"
+            data-fr="Mes expérimentations techniques et projets ouverts sont disponibles sur GitHub. Contributions et discussions bienvenues."
+            data-en="My technical experiments and open projects are available on GitHub. Contributions and discussions welcome.">
+            Mes expérimentations techniques et projets ouverts sont disponibles sur GitHub. Contributions et discussions bienvenues.
+          </p>
+          <a href="https://github.com/fabthebest" target="_blank" rel="noopener noreferrer"
+            style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--mono,monospace);font-size:.72rem;letter-spacing:.08em;color:var(--snow,#F0EDF8);background:var(--lifted,#1E1C22);border:1px solid var(--border2,rgba(255,255,255,.12));padding:.5rem 1.1rem;border-radius:100px;transition:background .2s,border-color .2s,transform .2s;text-decoration:none"
+            onmouseover="this.style.background='var(--lift2,#211F28)';this.style.borderColor='rgba(255,255,255,.25)';this.style.transform='translateY(-2px)'"
+            onmouseout="this.style.background='var(--lifted,#1E1C22)';this.style.borderColor='var(--border2,rgba(255,255,255,.12))';this.style.transform='none'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            github.com/fabthebest
+          </a>
+        </div>
+
+      </div>
+
+      <!-- CTA contact -->
+      <div class="rv" style="--d:.2s;text-align:center">
+        <p style="font-family:var(--serif,'EB Garamond',serif);font-style:italic;font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--mist,#9990A8);margin-bottom:1.5rem"
+          data-fr="Une idée de projet ? Une proposition de collaboration ?"
+          data-en="A project idea? A collaboration proposal?">
+          Une idée de projet ? Une proposition de collaboration ?
+        </p>
+        <a href="#" onclick="this.href='mai'+'lto:contact@fabricefilsaime.com';return true;"
+          style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--sans,sans-serif);font-size:.85rem;font-weight:500;padding:.95rem 2.2rem;border-radius:100px;background:transparent;border:1px solid var(--border2,rgba(255,255,255,.12));color:var(--snow,#F0EDF8);transition:background .25s,border-color .25s,transform .25s;text-decoration:none"
+          onmouseover="this.style.background='rgba(255,255,255,.07)';this.style.borderColor='rgba(255,255,255,.2)';this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.background='transparent';this.style.borderColor='var(--border2,rgba(255,255,255,.12))';this.style.transform='none'"
+          data-fr="Écrire à Fabrice →" data-en="Write to Fabrice →">
+          Écrire à Fabrice →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── POURQUOI J'ÉCRIS ── -->
+  <section id="manifeste" style="background:var(--deep)">
+    <div class="wrap">
+      <div style="max-width:860px;margin-inline:auto">
+
+        <div class="rv" style="text-align:center">
+          <div class="eyebrow" style="justify-content:center"
+            data-fr="Pourquoi j'écris" data-en="Why I Write">Pourquoi j'écris</div>
+        </div>
+
+        <!-- Ouverture : le style demandé, positif, réunificateur -->
+        <div class="rv" style="--d:.05s;margin:2rem 0 3rem;text-align:center">
+          <p style="font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,3vw,2.1rem);color:var(--snow);line-height:1.6;max-width:660px;margin-inline:auto"
+            data-fr="Art et science. Médecine et mots. Rigueur et beauté."
+            data-en="Art and science. Medicine and words. Rigour and beauty.">
+            Art et science. Médecine et mots. Rigueur et beauté.
+          </p>
+          <p style="font-family:var(--serif);font-size:clamp(1.35rem,3vw,2.1rem);color:var(--gold);line-height:1.6;max-width:660px;margin-inline:auto;margin-top:.75rem"
+            data-fr="J'ai choisi les deux. Parce que l'un sans l'autre ne dit pas toute la vérité."
+            data-en="I chose both. Because one without the other never tells the whole truth.">
+            J'ai choisi les deux. Parce que l'un sans l'autre ne dit pas toute la vérité.
+          </p>
+        </div>
+
+        <!-- Ce que l'écriture m'a appris que la science ne pouvait pas donner -->
+        <div class="rv" style="--d:.1s;margin-bottom:3rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start">
+          <div>
+            <p style="font-family:var(--serif);font-size:1.1rem;color:var(--mist);line-height:2.2;margin-bottom:1.5rem"
+              data-fr="La science m'a appris à mesurer. L'écriture m'a appris à rester dans la question - à nommer l'incertitude sans la forcer à se résoudre. C'est ce que les modèles ne font pas encore : ils répondent. Moi, j'apprends à mieux ne pas savoir."
+              data-en="Science taught me to measure. Writing taught me to stay inside the question - to name uncertainty without forcing it to resolve. That's what models don't yet do: they answer. I'm learning to not-know better.">
+              La science m'a appris à mesurer. L'écriture m'a appris à rester dans la question - à nommer l'incertitude sans la forcer à se résoudre. C'est ce que les modèles ne font pas encore : ils répondent. Moi, j'apprends à mieux ne pas savoir.
+            </p>
+            <p style="font-family:var(--serif);font-size:1.1rem;color:var(--mist);line-height:2.2"
+              data-fr="J'aime l'art parce qu'il pose les questions que la science n'ose pas encore formuler. J'aime la science parce qu'elle oblige l'art à se confronter au réel. L'un sans l'autre m'ennuie profondément."
+              data-en="I love art because it asks questions science hasn't yet dared to formulate. I love science because it forces art to confront reality. One without the other bores me deeply.">
+              J'aime l'art parce qu'il pose les questions que la science n'ose pas encore formuler. J'aime la science parce qu'elle oblige l'art à se confronter au réel. L'un sans l'autre m'ennuie profondément.
+            </p>
+          </div>
+          <div>
+            <!-- Invitation directe au lecteur -->
+            <p style="font-family:var(--serif);font-size:1.1rem;color:var(--mist);line-height:2.2;margin-bottom:1.5rem"
+              data-fr="Ce site est fait pour toi - pas pour me montrer. Pour toi qui te sens à l'étroit dans les catégories. Pour toi qui veux penser sérieusement sans renoncer à la beauté. Je veux que tu repartes avec quelque chose : une idée qui tient, un mot qui reste, un angle que tu n'avais pas vu."
+              data-en="This site is made for you - not to showcase myself. For you who feel constrained by categories. For you who want to think seriously without giving up beauty. I want you to leave with something: an idea that holds, a word that stays, an angle you hadn't seen.">
+              Ce site est fait pour toi - pas pour me montrer. Pour toi qui te sens à l'étroit dans les catégories. Pour toi qui veux penser sérieusement sans renoncer à la beauté. Je veux que tu repartes avec quelque chose : une idée qui tient, un mot qui reste, un angle que tu n'avais pas vu.
+            </p>
+            <p style="font-family:var(--serif);font-size:1.1rem;color:var(--mist);line-height:2.2"
+              data-fr="Écrits, réflexions, poésie - et les grandes questions qui façonnent notre époque, de l'intelligence humaine à l'intelligence artificielle. Un seul fil conducteur : l'attention portée au monde."
+              data-en="Writings, reflections, poetry - and the great questions shaping our era, from human intelligence to artificial intelligence. One through-line: attention paid to the world.">
+              Écrits, réflexions, poésie - et les grandes questions qui façonnent notre époque, de l'intelligence humaine à l'intelligence artificielle. Un seul fil conducteur : l'attention portée au monde.
+            </p>
+          </div>
+        </div>
+
+        <!-- Séparateur -->
+        <div style="width:56px;height:2px;background:var(--gold);margin:0 auto 3rem"></div>
+
+        <!-- Trois piliers -->
+        <div class="rv" style="--d:.15s;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);overflow:hidden;margin-bottom:3rem">
+          <div style="background:var(--surface);padding:1.75rem 2rem;border-top:2px solid var(--gold);text-align:center">
+            <div style="font-size:1.8rem;margin-bottom:.8rem">🎨</div>
+            <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem"
+              data-fr="Art" data-en="Art">Art</div>
+            <p style="font-family:var(--serif);font-style:italic;font-size:.97rem;color:var(--mist);line-height:1.8"
+              data-fr="La beauté comme forme de connaissance."
+              data-en="Beauty as a form of knowledge.">La beauté comme forme de connaissance.</p>
+          </div>
+          <div style="background:var(--surface);padding:1.75rem 2rem;border-top:2px solid var(--violet);text-align:center">
+            <div style="font-size:1.8rem;margin-bottom:.8rem">🔬</div>
+            <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--violet);margin-bottom:.6rem"
+              data-fr="Science" data-en="Science">Science</div>
+            <p style="font-family:var(--serif);font-style:italic;font-size:.97rem;color:var(--mist);line-height:1.8"
+              data-fr="La rigueur comme respect du réel."
+              data-en="Rigour as respect for reality.">La rigueur comme respect du réel.</p>
+          </div>
+          <div style="background:var(--surface);padding:1.75rem 2rem;border-top:2px solid var(--rust);text-align:center">
+            <div style="font-size:1.8rem;margin-bottom:.8rem">✍️</div>
+            <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--rust);margin-bottom:.6rem"
+              data-fr="Écriture" data-en="Writing">Écriture</div>
+            <p style="font-family:var(--serif);font-style:italic;font-size:.97rem;color:var(--mist);line-height:1.8"
+              data-fr="Le langage comme outil de pensée - pas de performance."
+              data-en="Language as a thinking tool - not performance.">Le langage comme outil de pensée - pas de performance.</p>
+          </div>
+        </div>
+
+        <!-- Framework -->
+        <div class="rv" style="--d:.18s;background:linear-gradient(135deg,rgba(160,126,212,.09) 0%,rgba(74,143,224,.06) 100%);border:1px solid rgba(160,126,212,.22);padding:2.25rem 2.5rem;margin-bottom:3rem">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:.75rem"
+            data-fr="Framework" data-en="Framework">Framework</div>
+          <h3 style="font-family:var(--serif);font-size:1.2rem;color:var(--snow);margin-bottom:.75rem;font-weight:400"
+            data-fr="Des outils pour penser mieux"
+            data-en="Tools for thinking better">Des outils pour penser mieux</h3>
+          <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8;margin-bottom:1.25rem;max-width:58ch"
+            data-fr="Des cadres conceptuels pour aborder certains aspects du réel avec plus de clarté. Pas des dogmes - des boussoles. Des structures qui permettent de voir ce qu'on ne voit pas à l'oeil nu. Pour ceux qui savent qu'on ne pense bien qu'avec des outils bien affinés."
+            data-en="Conceptual frameworks for approaching certain aspects of reality with more clarity. Not dogmas - compasses. Structures that let you see what the naked eye misses. For those who know that clear thinking requires refined tools.">
+            Des cadres conceptuels pour aborder certains aspects du réel avec plus de clarté. Pas des dogmes - des boussoles. Des structures qui permettent de voir ce qu'on ne voit pas à l'oeil nu. Pour ceux qui savent qu'on ne pense bien qu'avec des outils bien affinés.
+          </p>
+          <a href="#recherches"
+            style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--violet);background:rgba(160,126,212,.1);border:1px solid rgba(160,126,212,.25);padding:.55rem 1.2rem;border-radius:100px;text-decoration:none;transition:background .2s"
+            onmouseover="this.style.background='rgba(160,126,212,.2)'"
+            onmouseout="this.style.background='rgba(160,126,212,.1)'"
+            data-fr="Explorer le Labo →" data-en="Explore the Lab →">Explorer le Labo →</a>
+        </div>
+
+        <!-- Trajectoire -->
+        <div class="rv" style="--d:.22s;background:var(--night);border:1px solid var(--border);border-left:3px solid var(--sage);padding:1.75rem 2.25rem;margin-bottom:3rem">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.9rem"
+            data-fr="Parcours" data-en="Journey">Parcours</div>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--mist);line-height:2.1"
+            data-fr="Médecine - Santé publique - IA - Écriture. Pas une reconversion. Une <strong style='font-style:normal;color:var(--snow)'>accumulation</strong>. Chaque étape a affiné la suivante."
+            data-en="Medicine - Public health - AI - Writing. Not a career change. An <strong style='font-style:normal;color:var(--snow)'>accumulation</strong>. Each step refined the next.">
+            Médecine - Santé publique - IA - Écriture. Pas une reconversion. Une <strong style="font-style:normal;color:var(--snow)">accumulation</strong>. Chaque étape a affiné la suivante.
+          </p>
+        </div>
+
+        <!-- Phrase de clôture - grande et humble -->
+        <div class="rv" style="--d:.28s;text-align:center;padding:1rem 0 .5rem">
+          <p style="font-family:var(--serif);font-style:italic;font-size:clamp(1rem,2vw,1.3rem);color:var(--mist);line-height:2.1;max-width:58ch;margin-inline:auto"
+            data-fr="Je ne sais pas encore tout ce que j'ai à dire. Mais je sais que certaines choses valent la peine d'être dites lentement, avec soin - pour qu'elles restent."
+            data-en="I don't yet know everything I have to say. But I know some things are worth saying slowly, with care - so they last.">
+            Je ne sais pas encore tout ce que j'ai à dire. Mais je sais que certaines choses valent la peine d'être dites lentement, avec soin - pour qu'elles restent.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <div class="divider"></div>
+
+  <!-- ── NEWSLETTER ── -->
+  <section id="newsletter">
+    <div class="nl-bg"><div class="nl-orb"></div></div>
+    <div class="wrap">
+      <div class="nl-grid rv">
+        <div>
+          <div class="eyebrow" data-fr="Newsletter" data-en="Newsletter">Newsletter</div>
+          <h2 class="nl-sec-title" data-fr="Des mots dans<br>votre boîte mail." data-en="Words in<br>your inbox.">Des mots dans<br>votre boîte mail.</h2>
+          <p class="nl-desc" data-fr="Chaque semaine ou presque - un texte inédit, une réflexion, une découverte. Ni spam ni algorithme. Juste de la pensée vivante, directement chez vous." data-en="Each week or so - an original text, a reflection, a discovery. No spam, no algorithm. Just living thought, directly to you.">Chaque semaine ou presque - un texte inédit, une réflexion, une découverte. Ni spam ni algorithme. Juste de la pensée vivante, directement chez vous.</p>
+          <div class="sub-pill">
+            <span class="sub-dot"></span>
+            <span data-fr="Propulsé par Substack · Désabonnement en 1 clic" data-en="Powered by Substack · 1-click unsubscribe">Propulsé par Substack · Désabonnement en 1 clic</span>
+          </div>
+        </div>
+        <form class="nlform" id="nlform" novalidate onsubmit="handleNL(event)">
+          <div class="fgrp">
+            <label for="nname" class="flabel" data-fr="Prénom" data-en="First name">Prénom</label>
+            <input type="text" id="nname" class="finput" placeholder="Marie" autocomplete="given-name"/>
+          </div>
+          <div class="fgrp">
+            <label for="nemail" class="flabel" data-fr="Adresse email *" data-en="Email address *">Adresse email *</label>
+            <input type="email" id="nemail" class="finput" required placeholder="vous@exemple.com" autocomplete="email"/>
+            <span class="ferr" id="ferr" role="alert"></span>
+          </div>
+          <button type="submit" class="nl-submit" id="nlbtn">
+            <span class="btn-txt" data-fr="M'abonner gratuitement" data-en="Subscribe for free">M'abonner gratuitement</span>
+            <span class="btnloader"></span>
+          </button>
+          <p class="nl-sub-link"><a href="https://substack.com/@modernthinker20" id="substackLink" target="_blank" rel="noopener" data-fr="Voir les archives sur Substack →" data-en="View archives on Substack →">Voir les archives sur Substack →</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+
+  <!-- ── JOURNEY ── -->
+  <section id="journey" style="background:var(--night)">
+    <div class="wrap">
+      <div class="rv" style="--d:.05s;display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start">
+
+        <!-- Left: sticky label -->
+        <div style="position:sticky;top:calc(var(--hh) + 2rem)">
+          <div class="eyebrow" data-fr="Parcours" data-en="Journey">Parcours</div>
+          <h2 class="sec-title" style="margin-bottom:1rem"
+            data-fr="Trois passions.<br>Un seul fil."
+            data-en="Three passions.<br>One thread.">
+            Trois passions.<br>Un seul fil.
+          </h2>
+          <p style="font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--mist);line-height:1.9;max-width:28ch"
+            data-fr="L'écriture a toujours été là. La science est venue l'affûter. L'IA est venue tout bousculer."
+            data-en="Writing was always there. Science came to sharpen it. AI came to upend everything.">
+            L'écriture a toujours été là. La science est venue l'affûter. L'IA est venue tout bousculer.
+          </p>
+          <!-- Thread legend -->
+          <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.5rem">
+            <span class="jstep-tag jt-write" data-fr="Écriture" data-en="Writing">✍️ Écriture</span>
+            <span class="jstep-tag jt-sci" data-fr="Science" data-en="Science">🔬 Science</span>
+            <span class="jstep-tag jt-ai" data-fr="IA" data-en="AI">⚡ IA</span>
+            <span class="jstep-tag jt-pub" data-fr="Publication" data-en="Publication">📖 Publication</span>
+            <span class="jstep-tag jt-all" data-fr="Convergence" data-en="Convergence">🌀 Convergence</span>
+          </div>
+        </div>
+
+        <!-- Right: timeline -->
+        <div class="journey-line rv" style="--d:.1s">
+
+          <!-- Station 1 -->
+          <div class="jstep">
+            <div class="jstep-dot">✍️</div>
+            <div class="jstep-year" data-fr="Dès le début" data-en="From the start">Dès le début</div>
+            <div class="jstep-title"
+              data-fr="L'écriture avant tout le reste"
+              data-en="Writing before everything else">L'écriture avant tout le reste</div>
+            <p class="jstep-desc"
+              data-fr="Avant la science, avant les modèles - il y avait les mots. Lire pour comprendre le monde. Écrire pour le réorganiser. Cette impulsion n'a jamais disparu, elle a seulement trouvé de nouveaux territoires."
+              data-en="Before science, before models - there were words. Reading to understand the world. Writing to reorganise it. That impulse never left, it only found new territories.">
+              Avant la science, avant les modèles - il y avait les mots. Lire pour comprendre le monde. Écrire pour le réorganiser. Cette impulsion n'a jamais disparu, elle a seulement trouvé de nouveaux territoires.
+            </p>
+            <span class="jstep-tag jt-write" data-fr="Écriture" data-en="Writing">✍️ Écriture</span>
+          </div>
+
+          <!-- Station 2 -->
+          <div class="jstep">
+            <div class="jstep-dot">🔬</div>
+            <div class="jstep-year">2015 – 2021</div>
+            <div class="jstep-title"
+              data-fr="Correcteur en chef & Éditeur — Journal Intermed"
+              data-en="Correcteur en chef & Éditeur — Journal Intermed">Correcteur en chef & Éditeur — Journal Intermed</div>
+            <p class="jstep-desc"
+              data-fr="Six ans à la tête de la révision d'une revue médicale. La rigueur scientifique rencontre la précision du langage. Chaque mot compte quand il s'agit de médecine."
+              data-en="Six years leading the editorial review of a medical journal. Scientific rigour meets linguistic precision. Every word matters when medicine is at stake.">
+              Six ans à la tête de la révision d'une revue médicale. La rigueur scientifique rencontre la précision du langage. Chaque mot compte quand il s'agit de médecine.
+            </p>
+            <span class="jstep-tag jt-sci" data-fr="Science + Écriture" data-en="Science + Writing">🔬 Science + Écriture</span>
+          </div>
+
+          <!-- Station 3 -->
+          <div class="jstep">
+            <div class="jstep-dot">📖</div>
+            <div class="jstep-year" data-fr="Avril 2024" data-en="April 2024">Avril 2024</div>
+            <div class="jstep-title"
+              data-fr="Énigme — premier roman publié"
+              data-en="Énigme — first novel published">Énigme — premier roman publié</div>
+            <p class="jstep-desc"
+              data-fr="ISBN 2386170993. 41 pages denses. Une novella sur l'identité et le désir, écrite avec la même rigueur qu'un protocole - mais pour l'âme. La preuve que l'écriture n'était pas un hobby."
+              data-en="ISBN 2386170993. 41 dense pages. A novella on identity and desire, written with the same rigour as a protocol - but for the soul. Proof that writing was never a hobby.">
+              ISBN 2386170993. 41 pages denses. Une novella sur l'identité et le désir, écrite avec la même rigueur qu'un protocole - mais pour l'âme. La preuve que l'écriture n'était pas un hobby.
+            </p>
+            <span class="jstep-tag jt-pub" data-fr="Publication" data-en="Publication">📖 Publication</span>
+          </div>
+
+          <!-- Station 4 -->
+          <div class="jstep">
+            <div class="jstep-dot">⚡</div>
+            <div class="jstep-year">2024 – 2025</div>
+            <div class="jstep-title"
+              data-fr="L'IA entre dans la pièce"
+              data-en="AI enters the room">L'IA entre dans la pièce</div>
+            <p class="jstep-desc"
+              data-fr="Ce n'était pas prévu. Mais quand on a passé des années à analyser des systèmes humains, les systèmes artificiels deviennent une question naturelle. CÆSURA, le Black Hole Framework, le RSI - des outils pour comprendre ce que les modèles font, et ce qu'ils ne font pas."
+              data-en="It wasn't planned. But when you've spent years analysing human systems, artificial ones become a natural question. CÆSURA, the Black Hole Framework, RSI - tools to understand what models do, and what they don't.">
+              Ce n'était pas prévu. Mais quand on a passé des années à analyser des systèmes humains, les systèmes artificiels deviennent une question naturelle. CÆSURA, le Black Hole Framework, le RSI - des outils pour comprendre ce que les modèles font, et ce qu'ils ne font pas.
+            </p>
+            <span class="jstep-tag jt-ai" data-fr="IA &amp; Tech" data-en="AI &amp; Tech">⚡ IA &amp; Tech</span>
+          </div>
+
+          <!-- Station 5 -->
+          <div class="jstep">
+            <div class="jstep-dot">🎓</div>
+            <div class="jstep-year">2024 – 2025</div>
+            <div class="jstep-title"
+              data-fr="Santé publique — apprendre à lire les systèmes"
+              data-en="Public health — learning to read systems">Santé publique — apprendre à lire les systèmes</div>
+            <p class="jstep-desc"
+              data-fr="Master en systèmes et politiques de santé, ESPUM. J'y ai découvert quelque chose d'essentiel : les systèmes complexes ne sont pas opaques par nature - ils sont mal expliqués. Ma façon de travailler depuis : rendre le dense intelligible, le technique digestible. Et me demander toujours comment on pense ce qu'on pense - la métacognition comme boussole."
+              data-en="Master's in health systems and policies, ESPUM. I discovered something essential: complex systems aren't opaque by nature - they're poorly explained. My approach since: making the dense intelligible, the technical digestible. And always asking how we think what we think - metacognition as compass.">
+              Master en systèmes et politiques de santé, ESPUM. J'y ai découvert quelque chose d'essentiel : les systèmes complexes ne sont pas opaques par nature - ils sont mal expliqués. Ma façon de travailler depuis : rendre le dense intelligible, le technique digestible. Et me demander toujours comment on pense ce qu'on pense - la métacognition comme boussole.
+            </p>
+            <span class="jstep-tag jt-sci" data-fr="Santé publique" data-en="Public health">🔬 Santé publique</span>
+          </div>
+
+          <!-- Station 6 — Maintenant -->
+          <div class="jstep">
+            <div class="jstep-dot" style="border-color:var(--gold);background:rgba(212,168,75,.12)">🌀</div>
+            <div class="jstep-year" style="color:var(--gold)" data-fr="Maintenant" data-en="Now">Maintenant</div>
+            <div class="jstep-title"
+              data-fr="AE2ALT — Modern Thinker 2.0"
+              data-en="AE2ALT — Modern Thinker 2.0">AE2ALT — Modern Thinker 2.0</div>
+            <p class="jstep-desc"
+              data-fr="Trois fils devenus un. L'écriture comme discipline de pensée. La science comme méthode. L'IA comme nouveau territoire à cartographier - et à questionner. Ce n'est pas une conclusion. C'est un point de départ."
+              data-en="Three threads becoming one. Writing as a discipline of thought. Science as method. AI as new territory to map - and to question. This isn't a conclusion. It's a starting point.">
+              Trois fils devenus un. L'écriture comme discipline de pensée. La science comme méthode. L'IA comme nouveau territoire à cartographier - et à questionner. Ce n'est pas une conclusion. C'est un point de départ.
+            </p>
+            <span class="jstep-tag jt-all" data-fr="Convergence" data-en="Convergence">🌀 Convergence</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── COMING SOON ── -->
+  <section id="coming-soon" style="background:var(--surface)">
+    <div class="wrap">
+      <div class="rv" style="text-align:center;margin-bottom:3rem">
+        <div class="eyebrow" style="justify-content:center"
+          data-fr="Bientôt disponible" data-en="Coming soon">Bientôt disponible</div>
+        <h2 class="sec-title"
+          data-fr="Ce qui arrive." data-en="What's coming.">Ce qui arrive.</h2>
+        <p style="font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--fog);max-width:50ch;margin-inline:auto;margin-top:.75rem"
+          data-fr="Des projets en préparation - inscrits à la newsletter pour être parmi les premiers informés."
+          data-en="Projects in preparation - subscribe to the newsletter to be among the first notified.">
+          Des projets en préparation - inscrits à la newsletter pour être parmi les premiers informés.
+        </p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:2px;overflow:hidden" class="rv" style="--d:.1s">
+
+        <div style="background:var(--deep);padding:2rem">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.65rem"
+            data-fr="Collection de poésie" data-en="Poetry collection">Collection de poésie</div>
+          <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--snow);margin-bottom:.6rem;font-weight:400"
+            data-fr="Trois recueils en trois langues"
+            data-en="Three collections in three languages">Trois recueils en trois langues</h3>
+          <p style="font-family:var(--sans);font-size:.84rem;color:var(--fog);line-height:1.7;margin-bottom:1.25rem"
+            data-fr="Poésie en français, anglais et créole haïtien - prêts pour publication."
+            data-en="Poetry in French, English and Haitian Creole - ready for publication.">
+            Poésie en français, anglais et créole haïtien - prêts pour publication.
+          </p>
+          <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:rgba(212,168,75,.1);border:1px solid rgba(212,168,75,.2);padding:.3rem .75rem;border-radius:100px"
+            data-fr="En préparation" data-en="In preparation">En préparation</div>
+        </div>
+
+        <div style="background:var(--deep);padding:2rem">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:.65rem"
+            data-fr="Essai long" data-en="Long-form essay">Essai long</div>
+          <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--snow);margin-bottom:.6rem;font-weight:400"
+            data-fr="IA, langage et biais culturels"
+            data-en="AI, language and cultural biases">IA, langage et biais culturels</h3>
+          <p style="font-family:var(--sans);font-size:.84rem;color:var(--fog);line-height:1.7;margin-bottom:1.25rem"
+            data-fr="Un essai accessible sur ce que les modèles de langage révèlent - et cachent - sur nos cultures."
+            data-en="An accessible essay on what language models reveal - and conceal - about our cultures.">
+            Un essai accessible sur ce que les modèles de langage révèlent - et cachent - sur nos cultures.
+          </p>
+          <div style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--violet);background:rgba(160,126,212,.1);border:1px solid rgba(160,126,212,.2);padding:.3rem .75rem;border-radius:100px"
+            data-fr="Rédaction en cours" data-en="Writing in progress">Rédaction en cours</div>
+        </div>
+
+        <div style="background:var(--deep);padding:2rem">
+          <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.65rem"
+            data-fr="Newsletter premium" data-en="Premium newsletter">Newsletter premium</div>
+          <h3 style="font-family:var(--serif);font-size:1.15rem;color:var(--snow);margin-bottom:.6rem;font-weight:400"
+            data-fr="Substack - éditions approfondies"
+            data-en="Substack - in-depth editions">Substack - éditions approfondies</h3>
+          <p style="font-family:var(--sans);font-size:.84rem;color:var(--fog);line-height:1.7;margin-bottom:1.25rem"
+            data-fr="Des textes longs réservés aux abonnés - analyses, extraits inédits, coulisses de la recherche."
+            data-en="Long-form texts for subscribers - analyses, unpublished excerpts, behind-the-research notes.">
+            Des textes longs réservés aux abonnés - analyses, extraits inédits, coulisses de la recherche.
+          </p>
+          <a href="https://substack.com/@modernthinker20" target="_blank" rel="noopener"
+            style="display:inline-flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);background:rgba(94,175,148,.1);border:1px solid rgba(94,175,148,.2);padding:.3rem .75rem;border-radius:100px;text-decoration:none;transition:background .2s"
+            onmouseover="this.style.background='rgba(94,175,148,.18)'"
+            onmouseout="this.style.background='rgba(94,175,148,.1)'"
+            data-fr="S'abonner →" data-en="Subscribe →">S'abonner →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ── FAQ ── -->
+  <section id="faq" style="background:var(--night)">
+    <div class="wrap">
+      <div class="rv" style="text-align:center;margin-bottom:3rem">
+        <div class="eyebrow" style="justify-content:center"
+          data-fr="Questions fréquentes" data-en="FAQ">Questions fréquentes</div>
+        <h2 class="sec-title"
+          data-fr="Ce que vous voulez savoir." data-en="What you want to know.">Ce que vous voulez savoir.</h2>
+      </div>
+
+      <div style="max-width:760px;margin-inline:auto" class="rv" style="--d:.1s">
+
+        <!-- FAQ items -->
+        <div style="border-top:1px solid var(--border)">
+
+          <div class="faq-item" style="border-bottom:1px solid var(--border)">
+            <button onclick="toggleFaq(this)"
+              style="width:100%;text-align:left;padding:1.25rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem">
+              <span style="font-family:var(--serif);font-size:1.05rem;color:var(--snow)"
+                data-fr="Ce site est-il sécurisé ?" data-en="Is this site secure?">Ce site est-il sécurisé ?</span>
+              <span class="faq-arrow" style="color:var(--gold);font-size:.9rem;transition:transform .25s;flex-shrink:0">▼</span>
+            </button>
+            <div class="faq-body" style="display:none;padding-bottom:1.25rem">
+              <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8"
+                data-fr="Oui. Le site est servi via HTTPS (SSL/TLS activé automatiquement par Netlify). Toutes les connexions sont chiffrées. Aucune donnée personnelle n'est collectée sans votre consentement explicite."
+                data-en="Yes. The site is served via HTTPS (SSL/TLS automatically enabled by Netlify). All connections are encrypted. No personal data is collected without your explicit consent.">
+                Oui. Le site est servi via HTTPS (SSL/TLS activé automatiquement par Netlify). Toutes les connexions sont chiffrées. Aucune donnée personnelle n'est collectée sans votre consentement explicite.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" style="border-bottom:1px solid var(--border)">
+            <button onclick="toggleFaq(this)"
+              style="width:100%;text-align:left;padding:1.25rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem">
+              <span style="font-family:var(--serif);font-size:1.05rem;color:var(--snow)"
+                data-fr="Où sont stockées mes données ?" data-en="Where is my data stored?">Où sont stockées mes données ?</span>
+              <span class="faq-arrow" style="color:var(--gold);font-size:.9rem;transition:transform .25s;flex-shrink:0">▼</span>
+            </button>
+            <div class="faq-body" style="display:none;padding-bottom:1.25rem">
+              <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8"
+                data-fr="Ce site ne stocke aucune donnée personnelle. Si vous vous inscrivez à la newsletter, votre email est géré par Substack (hébergé aux États-Unis, conforme RGPD). Si vous acceptez les cookies analytiques, Google Analytics stocke des données anonymisées sur les serveurs de Google."
+                data-en="This site stores no personal data. If you subscribe to the newsletter, your email is managed by Substack (hosted in the US, GDPR compliant). If you accept analytics cookies, Google Analytics stores anonymized data on Google's servers.">
+                Ce site ne stocke aucune donnée personnelle. Si vous vous inscrivez à la newsletter, votre email est géré par Substack (hébergé aux États-Unis, conforme RGPD). Si vous acceptez les cookies analytiques, Google Analytics stocke des données anonymisées sur les serveurs de Google.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" style="border-bottom:1px solid var(--border)">
+            <button onclick="toggleFaq(this)"
+              style="width:100%;text-align:left;padding:1.25rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem">
+              <span style="font-family:var(--serif);font-size:1.05rem;color:var(--snow)"
+                data-fr="Puis-je republier vos textes ?" data-en="Can I republish your texts?">Puis-je republier vos textes ?</span>
+              <span class="faq-arrow" style="color:var(--gold);font-size:.9rem;transition:transform .25s;flex-shrink:0">▼</span>
+            </button>
+            <div class="faq-body" style="display:none;padding-bottom:1.25rem">
+              <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8"
+                data-fr="Tous les textes publiés sur ce site sont protégés par le droit d'auteur (© Fabrice Fils-Aimé, tous droits réservés). Vous pouvez citer de courts extraits avec attribution. Pour toute republication, traduction ou usage commercial, contactez-moi directement."
+                data-en="All texts published on this site are protected by copyright (© Fabrice Fils-Aimé, all rights reserved). You may quote short excerpts with attribution. For any republication, translation or commercial use, contact me directly.">
+                Tous les textes publiés sur ce site sont protégés par le droit d'auteur (© Fabrice Fils-Aimé, tous droits réservés). Vous pouvez citer de courts extraits avec attribution. Pour toute republication, traduction ou usage commercial, contactez-moi directement.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" style="border-bottom:1px solid var(--border)">
+            <button onclick="toggleFaq(this)"
+              style="width:100%;text-align:left;padding:1.25rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem">
+              <span style="font-family:var(--serif);font-size:1.05rem;color:var(--snow)"
+                data-fr="La newsletter est-elle gratuite ?" data-en="Is the newsletter free?">La newsletter est-elle gratuite ?</span>
+              <span class="faq-arrow" style="color:var(--gold);font-size:.9rem;transition:transform .25s;flex-shrink:0">▼</span>
+            </button>
+            <div class="faq-body" style="display:none;padding-bottom:1.25rem">
+              <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8"
+                data-fr="Oui. La newsletter est gratuite. Une édition premium est prévue pour les abonnés qui souhaitent soutenir le travail et accéder à des contenus approfondis - mais rien n'est jamais obligatoire."
+                data-en="Yes. The newsletter is free. A premium edition is planned for subscribers who wish to support the work and access in-depth content - but nothing is ever mandatory.">
+                Oui. La newsletter est gratuite. Une édition premium est prévue pour les abonnés qui souhaitent soutenir le travail et accéder à des contenus approfondis - mais rien n'est jamais obligatoire.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item" style="border-bottom:1px solid var(--border)">
+            <button onclick="toggleFaq(this)"
+              style="width:100%;text-align:left;padding:1.25rem 0;background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem">
+              <span style="font-family:var(--serif);font-size:1.05rem;color:var(--snow)"
+                data-fr="Comment puis-je vous contacter ?" data-en="How can I contact you?">Comment puis-je vous contacter ?</span>
+              <span class="faq-arrow" style="color:var(--gold);font-size:.9rem;transition:transform .25s;flex-shrink:0">▼</span>
+            </button>
+            <div class="faq-body" style="display:none;padding-bottom:1.25rem">
+              <p style="font-family:var(--sans);font-size:.9rem;color:var(--mist);line-height:1.8"
+                data-fr="Via le lien Contact dans le footer, par email à contact [at] fabricefilsaime.com, ou directement via GitHub pour les collaborations techniques."
+                data-en="Via the Contact link in the footer, by email at contact [at] fabricefilsaime.com, or directly via GitHub for technical collaborations.">
+                Via le lien Contact dans le footer, par email à contact [at] fabricefilsaime.com, ou directement via GitHub pour les collaborations techniques.
+              </p>
+            </div>
+          </div>
+
+        </div><!-- /faq items -->
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div>
+        <p class="footer-brand">Fabrice Fils-Aimé</p>
+        <p class="footer-desc" data-fr="Rédacteur, correcteur et éditeur multilingue. Écrivain, essayiste, chercheur indépendant. Modern Thinker 2.0." data-en="Multilingual writer, copy editor. Author, essayist, independent researcher. Modern Thinker 2.0.">Rédacteur, correcteur et éditeur multilingue. Écrivain, essayiste, chercheur indépendant. Modern Thinker 2.0.</p>
+      </div>
+      <div>
+        <p class="fcol-title" data-fr="Explorer" data-en="Explore">Explorer</p>
+        <ul class="fcol">
+          <li><a href="#reflexions" data-fr="Réflexions" data-en="Reflections">Réflexions</a></li>
+          <li><a href="#poesie"        data-fr="Poésie"      data-en="Poetry">Poésie</a></li>
+          <li><a href="#essais"        data-fr="Essais"         data-en="Essays">Essais</a></li>
+          <li><a href="#ia"            data-fr="IA &amp; Science" data-en="AI &amp; Science">IA &amp; Science</a></li>
+          <li><a href="#recherches"    data-fr="Le Labo"       data-en="The Lab">Le Labo</a></li>
+          <li><a href="#collaboration" data-fr="Collaboration"  data-en="Collaboration">Collaboration</a></li>
+          <li><a href="#journey"      data-fr="Parcours"           data-en="Journey">Parcours</a></li>
+    <li><a href="#manifeste"     data-fr="Pourquoi j'écris"  data-en="Why I Write">Pourquoi j'écris</a></li>
+          <li><a href="#actualites"    data-fr="Actualités"     data-en="News">Actualités</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="fcol-title" data-fr="Liens & Contact" data-en="Links & Contact">Liens & Contact</p>
+        <ul class="fcol">
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#livre" data-fr="Le Livre" data-en="The Book">Le Livre</a></li>
+          <li><a href="https://substack.com/@modernthinker20" id="substackLink" target="_blank" rel="noopener">Substack</a></li>
+          <li><a href="https://github.com/fabthebest" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.amazon.ca/dp/2386170993" target="_blank" rel="noopener">Amazon</a></li>
+          <li><a href="#" onclick="this.href='mai'+'lto:contact@fabricefilsaime.com';return true;" data-fr="Contact" data-en="Contact">Contact</a></li>
+          <li><a href="#" onclick="openPrivacy();return false;" data-fr="Politique de confidentialité" data-en="Privacy Policy">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fb">
+      <p>© <span id="yr"></span> Fabrice Fils-Aimé. <span data-fr="Tous droits réservés." data-en="All rights reserved.">Tous droits réservés.</span></p>
+      <p data-fr="Modern Thinker 2.0 · Fait avec soin, quelques nuits tardives et beaucoup d'encre." data-en="Modern Thinker 2.0 · Made with care, a few late nights and a lot of ink.">Modern Thinker 2.0 · Fait avec soin, quelques nuits tardives et beaucoup d'encre.</p>
+    </div>
+    <div style="display:flex;justify-content:center;padding-top:1rem;border-top:1px solid var(--line);margin-top:.5rem">
+      <button onclick="resetCookieConsent()" style="font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog);background:none;border:none;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:.25rem .5rem;transition:color .2s"
+        data-fr="Gérer mes cookies" data-en="Manage my cookies"
+        onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--fog)'">
+        Gérer mes cookies
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="overlay" id="ov" role="dialog" aria-modal="true" aria-labelledby="mtitle" aria-hidden="true" onclick="maybeClose(event)">
+  <div class="modal-box">
+    <button class="mclose" onclick="closeModal()" data-fr="✕ Fermer" data-en="✕ Close">✕ Fermer</button>
+    <div id="mcontent" tabindex="-1"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- PRIVACY MODAL -->
+<div class="overlay" id="privacy-ov" role="dialog" aria-modal="true" aria-labelledby="privacy-title" aria-hidden="true"
+  onclick="if(event.target===this)closePrivacy()" style="z-index:910">
+  <div class="mbox" style="max-width:780px">
+    <button class="mclose" onclick="closePrivacy()"
+      data-fr="✕ Fermer" data-en="✕ Close">✕ Fermer</button>
+    <div id="privacy-content" tabindex="-1">
+
+      <div style="font-family:var(--mono,monospace);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold,#C9A84C);margin-bottom:.75rem"
+        data-fr="Confidentialité & Cookies" data-en="Privacy & Cookies">Confidentialité & Cookies</div>
+
+      <h2 id="privacy-title" style="font-family:var(--serif,'EB Garamond',serif);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;color:var(--snow,#F0EDF8);margin-bottom:.5rem"
+        data-fr="Politique de confidentialité" data-en="Privacy Policy">Politique de confidentialité</h2>
+
+      <p style="font-family:var(--mono,monospace);font-size:.62rem;color:var(--fog,#625E6E);letter-spacing:.08em;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border,rgba(255,255,255,.065))"
+        data-fr="Dernière mise à jour : 2025 · fabricefilsaime.com"
+        data-en="Last updated: 2025 · fabricefilsaime.com">
+        Dernière mise à jour : 2025 · fabricefilsaime.com
+      </p>
+
+      <div style="font-family:var(--sans,sans-serif);font-size:.93rem;color:var(--mist,#9990A8);line-height:1.9">
+
+        <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:1.2rem;color:var(--snow,#F0EDF8);margin:1.5rem 0 .5rem"
+          data-fr="1. Responsable du traitement" data-en="1. Data controller">1. Responsable du traitement</h3>
+        <p data-fr="Ce site est édité par Fabrice Fils-Aimé (fabricefilsaime.com). Pour toute question relative à vos données, vous pouvez écrire à : contact [at] fabricefilsaime.com"
+           data-en="This site is published by Fabrice Fils-Aimé (fabricefilsaime.com). For any questions about your data, write to: contact [at] fabricefilsaime.com">
+          Ce site est édité par Fabrice Fils-Aimé (fabricefilsaime.com). Pour toute question relative à vos données, vous pouvez écrire à : contact [at] fabricefilsaime.com
+        </p>
+
+        <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:1.2rem;color:var(--snow,#F0EDF8);margin:1.5rem 0 .5rem"
+          data-fr="2. Données collectées" data-en="2. Data collected">2. Données collectées</h3>
+        <p data-fr="Ce site ne collecte aucune donnée personnelle directement. Il n'existe pas de formulaire d'inscription avec stockage local - les inscriptions à la newsletter sont gérées par Substack (voir leur politique de confidentialité sur substack.com)."
+           data-en="This site collects no personal data directly. There is no registration form with local storage - newsletter sign-ups are handled by Substack (see their privacy policy at substack.com).">
+          Ce site ne collecte aucune donnée personnelle directement. Il n'existe pas de formulaire d'inscription avec stockage local - les inscriptions à la newsletter sont gérées par Substack (voir leur politique de confidentialité sur substack.com).
+        </p>
+
+        <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:1.2rem;color:var(--snow,#F0EDF8);margin:1.5rem 0 .5rem"
+          data-fr="3. Cookies et Google Analytics" data-en="3. Cookies and Google Analytics">3. Cookies et Google Analytics</h3>
+        <p data-fr="Ce site utilise Google Analytics 4 uniquement avec votre consentement explicite. Si vous acceptez, les cookies suivants peuvent être déposés dans votre navigateur :"
+           data-en="This site uses Google Analytics 4 only with your explicit consent. If you accept, the following cookies may be placed in your browser:">
+          Ce site utilise Google Analytics 4 uniquement avec votre consentement explicite. Si vous acceptez, les cookies suivants peuvent être déposés dans votre navigateur :
+        </p>
+
+        <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.83rem">
+          <thead>
+            <tr style="background:var(--surface,#131116)">
+              <th style="padding:.6rem .8rem;text-align:left;font-family:var(--mono,monospace);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog,#625E6E);border-bottom:1px solid var(--border,rgba(255,255,255,.065))"
+                data-fr="Cookie" data-en="Cookie">Cookie</th>
+              <th style="padding:.6rem .8rem;text-align:left;font-family:var(--mono,monospace);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog,#625E6E);border-bottom:1px solid var(--border,rgba(255,255,255,.065))"
+                data-fr="Durée" data-en="Duration">Durée</th>
+              <th style="padding:.6rem .8rem;text-align:left;font-family:var(--mono,monospace);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fog,#625E6E);border-bottom:1px solid var(--border,rgba(255,255,255,.065))"
+                data-fr="Rôle" data-en="Purpose">Rôle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border,rgba(255,255,255,.065))">
+              <td style="padding:.6rem .8rem;font-family:var(--mono,monospace);font-size:.75rem;color:var(--rust,#C4623A)">_ga</td>
+              <td style="padding:.6rem .8rem" data-fr="2 ans" data-en="2 years">2 ans</td>
+              <td style="padding:.6rem .8rem" data-fr="Identifie les visiteurs uniques" data-en="Identifies unique visitors">Identifie les visiteurs uniques</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border,rgba(255,255,255,.065))">
+              <td style="padding:.6rem .8rem;font-family:var(--mono,monospace);font-size:.75rem;color:var(--rust,#C4623A)">_ga_XXXXXXX</td>
+              <td style="padding:.6rem .8rem" data-fr="2 ans" data-en="2 years">2 ans</td>
+              <td style="padding:.6rem .8rem" data-fr="Lié à votre propriété Analytics" data-en="Linked to your Analytics property">Lié à la propriété Analytics</td>
+            </tr>
+            <tr>
+              <td style="padding:.6rem .8rem;font-family:var(--mono,monospace);font-size:.75rem;color:var(--rust,#C4623A)">_gid</td>
+              <td style="padding:.6rem .8rem" data-fr="24 heures" data-en="24 hours">24 heures</td>
+              <td style="padding:.6rem .8rem" data-fr="Distingue les sessions" data-en="Distinguishes sessions">Distingue les sessions</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:.85rem" data-fr="Les adresses IP sont anonymisées. Aucune donnée n'est vendue à des tiers. Google Analytics est soumis aux conditions d'utilisation de Google (policies.google.com/privacy)."
+           data-en="IP addresses are anonymized. No data is sold to third parties. Google Analytics is subject to Google's terms of use (policies.google.com/privacy).">
+          Les adresses IP sont anonymisées. Aucune donnée n'est vendue à des tiers. Google Analytics est soumis aux conditions d'utilisation de Google.
+        </p>
+
+        <h3 style="font-family:var(--serif,'EB Garamond',serif);font-size:1.2rem;color:var(--snow,#F0EDF8);margin:1.5rem 0 .5rem"
+          data-fr="4. Vos droits" data-en="4. Your rights">4. Vos droits</h3>
+        <p data-fr="Conformément au RGPD (Europe) et à la Loi 25 (Québec), vous pouvez à tout moment accepter, refuser ou modifier votre consentement aux cookies via le bouton ci-dessous ou le lien 'Gérer mes cookies' en bas de page."
+           data-en="In accordance with GDPR (Europe) and Law 25 (Québec), you can at any time accept, refuse or modify your cookie consent via the button below or the 'Manage my cookies' link at the bottom of the page.">
+          Conformément au RGPD (Europe) et à la Loi 25 (Québec), vous pouvez à tout moment accepter, refuser ou modifier votre consentement aux cookies via le bouton ci-dessous ou le lien "Gérer mes cookies" en bas de page.
+        </p>
+
+        <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border,rgba(255,255,255,.065));display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+          <button onclick="localStorage.setItem('ga_consent','accepted');loadGA();closePrivacy();showToast('✓ Cookies acceptés');"
+            style="font-family:var(--sans,sans-serif);font-size:.8rem;font-weight:500;padding:.6rem 1.4rem;border-radius:100px;background:var(--gold,#C9A84C);color:#080709;border:none;cursor:pointer;transition:background .2s"
+            data-fr="Accepter les cookies" data-en="Accept cookies">Accepter les cookies</button>
+          <button onclick="localStorage.setItem('ga_consent','declined');closePrivacy();showToast('Cookies refusés');"
+            style="font-family:var(--sans,sans-serif);font-size:.8rem;padding:.6rem 1.4rem;border-radius:100px;background:transparent;color:var(--snow,#F0EDF8);border:1px solid var(--border2,rgba(255,255,255,.12));cursor:pointer;transition:border-color .2s"
+            data-fr="Refuser les cookies" data-en="Decline cookies">Refuser les cookies</button>
+          <button onclick="resetCookieConsent();closePrivacy();"
+            style="font-family:var(--mono,monospace);font-size:.68rem;padding:.5rem 1rem;border-radius:100px;background:transparent;color:var(--fog,#625E6E);border:1px solid var(--border,rgba(255,255,255,.065));cursor:pointer;transition:color .2s"
+            data-fr="Réinitialiser mon choix" data-en="Reset my choice">Réinitialiser mon choix</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG
+   ============================================================ */
+const SUBSTACK = 'https://substack.com/@modernthinker20';
+const AMZN = {
+  ca:'https://www.amazon.ca/Énigme-Fabrice-Fils-Aimé/dp/2386170993',
+  com:'https://www.amazon.com/dp/2386170993',
+  fr:'https://www.amazon.fr/dp/2386170993',
+  uk:'https://www.amazon.co.uk/dp/2386170993',
+  de:'https://www.amazon.de/dp/2386170993',
+  default:'https://www.amazon.com/dp/2386170993',
+};
+const CMAP = {CA:'ca',US:'com',FR:'fr',BE:'fr',CH:'fr',LU:'fr',GB:'uk',IE:'uk',DE:'de',AT:'de'};
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let lang = localStorage.getItem('lang')||'fr';
+let theme = localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+let menuOpen = false;
+let modalOpen = false;
+let amznStore = 'default';
+let country = null;
+
+/* ============================================================
+   LOADER
+   ============================================================ */
+/* Loader - disparaît au plus tard après 1.5s, sans attendre les ressources externes */
+function dismissLoader(){
+  const l=document.getElementById('loader');
+  if(l) l.classList.add('out');
+}
+setTimeout(dismissLoader, 800);
+window.addEventListener('load', function(){ setTimeout(dismissLoader, 200); });
+document.addEventListener('DOMContentLoaded', function(){ setTimeout(dismissLoader, 1500); });
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+const cur=document.getElementById('cur'), dot=document.getElementById('curDot');
+if(window.matchMedia('(hover:hover)').matches && cur){
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'});
+  (function tick(){cx+=(mx-cx)*.1;cy+=(my-cy)*.1;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(tick)})();
+  const hov='a,button,[role="button"],.wcard,.stat,.aitem';
+  document.addEventListener('mouseover',e=>{if(e.target.closest(hov))cur.classList.add('hover')});
+  document.addEventListener('mouseout',e=>{if(e.target.closest(hov))cur.classList.remove('hover')});
+  document.addEventListener('mouseleave',()=>cur.style.opacity='0');
+  document.addEventListener('mouseenter',()=>cur.style.opacity='1');
+}
+
+/* ============================================================
+   HEADER SCROLL
+   ============================================================ */
+const hdrEl=document.getElementById('hdr');
+window.addEventListener('scroll',()=>hdrEl.classList.toggle('sc',window.scrollY>20),{passive:true});
+
+/* NAV active highlight */
+const secs=[...document.querySelectorAll('section[id],div[id="newsletter"]')];
+const nls=[...document.querySelectorAll('nav.dn .nl')];
+window.addEventListener('scroll',()=>{
+  let cur2='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-140)cur2=s.id});
+  nls.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+cur2));
+},{passive:true});
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.querySelector(a.getAttribute('href'));
+  if(!t)return;
+  e.preventDefault();
+  window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-78,behavior:'smooth'});
+  if(menuOpen)closeMenu();
+}));
+
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
+const mbtn=document.getElementById('menuBtn'),mm=document.getElementById('mmenu');
+mbtn.addEventListener('click',()=>menuOpen?closeMenu():openMenu());
+document.addEventListener('click',e=>{if(menuOpen&&!mm.contains(e.target)&&!mbtn.contains(e.target))closeMenu()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(menuOpen)closeMenu();if(modalOpen)closeModal();var pov=document.getElementById('privacy-ov');if(pov&&pov.classList.contains('open'))closePrivacy();}});
+function openMenu(){menuOpen=true;mm.classList.add('open');mbtn.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+function closeMenu(){menuOpen=false;mm.classList.remove('open');mbtn.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+
+/* ============================================================
+   LANG
+   ============================================================ */
+/* Spanish translations map */
+const ES={
+  'Accueil':'Inicio','Notre équipe':'Nuestro equipo','Le Livre':'El Libro',
+  'Réflexions':'Reflexiones','Poésie':'Poesía','Essais':'Ensayos',
+  'IA & Science':'IA y Ciencia','Actualités':'Noticias',
+  'Le Labo':'El Laboratorio','Collaboration':'Colaboración',
+  'Pourquoi j\'écris':'Por qué escribo','Newsletter':'Newsletter','Contact':'Contacto',
+  'Home':'Inicio','Our Team':'Nuestro equipo','The Book':'El Libro',
+  'Reflections':'Reflexiones','Poetry':'Poesía','Essays':'Ensayos',
+  'AI & Science':'IA y Ciencia','News':'Noticias',
+  'Research':'Investigaciones','Why I Write':'Por qué escribo',
+  'Commander sur Amazon':'Pedir en Amazon','Order on Amazon':'Pedir en Amazon',
+  "S'abonner":'Suscribirse','Subscribe':'Suscribirse',
+  'Votre email':'Tu correo electrónico','Your email':'Tu correo electrónico',
+  'Lire un extrait':'Leer un fragmento','Read an excerpt':'Leer un fragmento',
+  'Tous droits réservés.':'Todos los derechos reservados.',
+  'All rights reserved.':'Todos los derechos reservados.',
+  'Refuser les cookies':'Rechazar cookies','Accepter les cookies':'Aceptar cookies',
+  'Gérer mes cookies':'Gestionar mis cookies','Manage my cookies':'Gestionar mis cookies',
+  'Politique de confidentialité':'Política de privacidad','Privacy Policy':'Política de privacidad',
+  'Liens & Contact':'Vínculos y Contacto','Links & Contact':'Vínculos y Contacto',
+  'Explorer':'Explorar','Suivre':'Seguir','Follow':'Seguir',
+  'Ouvert à la <em>collaboration</em>.':'Abierto a la <em>colaboración</em>.',
+  'Open for <em>collaboration</em>.':'Abierto a la <em>colaboración</em>.',
+  'Écriture & Édition':'Escritura y Edición','Recherche & IA':'Investigación e IA',
+  'Projets créatifs':'Proyectos creativos','Code & Projets ouverts':'Código y Proyectos abiertos',
+  'Écrire à Fabrice →':'Escribir a Fabrice →','Write to Fabrice →':'Escribir a Fabrice →',
+  'Rédacteur, correcteur et éditeur multilingue':'Redactor, corrector y editor multilingüe',
+  'Écrivain, essayiste, chercheur indépendant':'Escritor, ensayista, investigador independiente',
+  'Modern Thinker 2.0':'Modern Thinker 2.0',
+  'Événement':'Evento','Event':'Evento','Publication':'Publicación',
+  'Médias':'Medios','Media':'Medios','Livre':'Libro','Book':'Libro',
+  'Recherche':'Investigación','À venir':'Próximamente','Coming':'Próximamente',
+};
+
+document.getElementById('langBtn').addEventListener('click',()=>{
+  lang=lang==='fr'?'en':lang==='en'?'es':'fr';
+  localStorage.setItem('lang',lang);
+  applyLang();
+});
+
+function applyLang(){
+  document.documentElement.lang=lang;
+  const lbl=lang==='fr'?'EN':lang==='en'?'ES':'FR';
+  document.getElementById('langLbl').textContent=lbl;
+  document.querySelectorAll('[data-fr]').forEach(el=>{
+    let t;
+    if(lang==='es'){
+      const frV=el.getAttribute('data-fr');
+      const enV=el.getAttribute('data-en');
+      t=ES[frV]||ES[enV]||enV||frV;
+    } else {
+      t=el.getAttribute('data-'+lang);
+    }
+    if(t!=null){if(el.tagName==='INPUT')el.placeholder=t;else el.innerHTML=t;}
+  });
+  updateAHint();
+}
+
+/* ============================================================
+   THEME
+   ============================================================ */
+applyTheme(theme);
+document.getElementById('themeBtn').addEventListener('click',()=>{
+  theme=theme==='dark'?'light':'dark';
+  localStorage.setItem('theme',theme);
+  applyTheme(theme);
+});
+function applyTheme(t){
+  /* For a dark-only site, theme toggle changes to a lighter warm variant */
+  if(t==='light'){
+    document.documentElement.style.setProperty('--night','#F4F0E8');
+    document.documentElement.style.setProperty('--deep','#EDE8DC');
+    document.documentElement.style.setProperty('--surface','#E6E1D4');
+    document.documentElement.style.setProperty('--lifted','#DDD8CA');
+    document.documentElement.style.setProperty('--border','rgba(0,0,0,.07)');
+    document.documentElement.style.setProperty('--border2','rgba(0,0,0,.13)');
+    document.documentElement.style.setProperty('--fog','#6B6050');
+    document.documentElement.style.setProperty('--mist','#4A4035');
+    document.documentElement.style.setProperty('--snow','#1A1410');
+    document.documentElement.style.setProperty('--warm','#2A2018');
+  } else {
+    document.documentElement.style.setProperty('--night','#09080A');
+    document.documentElement.style.setProperty('--deep','#111014');
+    document.documentElement.style.setProperty('--surface','#161419');
+    document.documentElement.style.setProperty('--lifted','#1E1C22');
+    document.documentElement.style.setProperty('--border','rgba(255,255,255,.07)');
+    document.documentElement.style.setProperty('--border2','rgba(255,255,255,.13)');
+    document.documentElement.style.setProperty('--fog','#6B6775');
+    document.documentElement.style.setProperty('--mist','#9B96A6');
+    document.documentElement.style.setProperty('--snow','#F2EFF8');
+    document.documentElement.style.setProperty('--warm','#EDE5D8');
+  }
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* ============================================================
+   AMAZON GEO
+   ============================================================ */
+(async()=>{
+  try{
+    const r=await fetch('https://ipapi.co/json/',{signal:AbortSignal.timeout(4000)});
+    const d=await r.json();
+    country=d.country_code;
+    amznStore=CMAP[country]||'default';
+  }catch(e){amznStore='default'}
+  updateAHint();
+})();
+
+function updateAHint(){
+  const h=document.getElementById('aHint');
+  if(!h)return;
+  if(!country){h.textContent=lang==='fr'?'Détection de votre pays…':'Detecting your country…';return}
+  const map={
+    ca:['🇨🇦 Amazon Canada','🇨🇦 Amazon Canada'],
+    com:['🇺🇸 Amazon.com (USA)','🇺🇸 Amazon.com (USA)'],
+    fr:['🇫🇷 Amazon France','🇫🇷 Amazon France'],
+    uk:['🇬🇧 Amazon UK','🇬🇧 Amazon UK'],
+    de:['🇩🇪 Amazon Allemagne','🇩🇪 Amazon Germany'],
+    default:['🌍 Amazon.com (mondial)','🌍 Amazon.com (worldwide)'],
+  };
+  const s=map[amznStore]||map.default;
+  h.textContent=(lang==='fr'?'→ Redirigé vers ':'→ Redirecting to ')+s[lang==='fr'?0:1];
+}
+
+function redirectAmazon(){
+  window.open(AMZN[amznStore]||AMZN.default,'_blank','noopener,noreferrer');
+}
+
+/* ============================================================
+   NEWSLETTER
+   ============================================================ */
+async function handleNL(e){
+  e.preventDefault();
+  const email=document.getElementById('nemail').value.trim();
+  const err=document.getElementById('ferr');
+  const btn=document.getElementById('nlbtn');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    err.textContent=lang==='fr'?'Veuillez entrer une adresse email valide.':'Please enter a valid email address.';
+    return;
+  }
+  err.textContent='';
+  btn.classList.add('ld');btn.disabled=true;
+  await new Promise(r=>setTimeout(r,1200));
+  btn.classList.remove('ld');btn.disabled=false;
+  showToast(lang==='fr'?'✓ Bienvenue !':'✓ Welcome aboard!');
+  document.getElementById('nlform').reset();
+  setTimeout(()=>window.open(SUBSTACK,'_blank','noopener,noreferrer'),1500);
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+function showToast(msg,d=3000){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'),d);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+function openArticle(id){
+  const a=ART[id];
+  if(!a)return;
+  const ov=document.getElementById('ov');
+  const mc=document.getElementById('mcontent');
+  const title=lang==='fr'?a.titleFr:a.titleEn;
+  const body=lang==='fr'?a.bodyFr:a.bodyEn;
+  const date=lang==='fr'?a.dateFr:a.dateEn;
+  const tag=lang==='fr'?a.tagFr:a.tagEn;
+
+  /* Copyright footer for poems */
+  let extra = '';
+  if(a.cls === 't-poe'){
+    const yr = new Date().getFullYear();
+    extra = lang==='fr'
+      ? `<div style="margin-top:2rem;padding:1rem 1.2rem;background:var(--lifted);border:1px solid var(--border2);border-radius:8px;font-family:var(--mono);font-size:.62rem;color:var(--fog);line-height:1.8"><span style="color:var(--violet);letter-spacing:.12em;text-transform:uppercase;font-size:.55rem">© Droits réservés</span><br>Fils-Aimé, Fabrice. "${title}." <em>fabricefilsaime.com</em>, ${yr}. Tous droits réservés. Reproduction interdite sans autorisation.</div>`
+      : `<div style="margin-top:2rem;padding:1rem 1.2rem;background:var(--lifted);border:1px solid var(--border2);border-radius:8px;font-family:var(--mono);font-size:.62rem;color:var(--fog);line-height:1.8"><span style="color:var(--violet);letter-spacing:.12em;text-transform:uppercase;font-size:.55rem">© All rights reserved</span><br>Fils-Aimé, Fabrice. "${title}." <em>fabricefilsaime.com</em>, ${yr}. All rights reserved. No reproduction without permission.</div>`;
+  }
+
+  mc.innerHTML=`
+    <span class="ctag ${a.cls} modal-tag">${tag}</span>
+    <h2 class="modal-title" id="mtitle">${title}</h2>
+    <p class="modal-date">${date}</p>
+    <div class="mbody">${body}</div>
+    ${extra}
+  `;
+  ov.classList.add('open');ov.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';modalOpen=true;
+  setTimeout(()=>mc.focus(),80);
+}
+
+function closeModal(){
+  const ov=document.getElementById('ov');
+  ov.classList.remove('open');ov.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';modalOpen=false;
+}
+
+function maybeClose(e){if(e.target===document.getElementById('ov'))closeModal()}
+window.openArticle=openArticle;
+window.redirectAmazon=redirectAmazon;
+
+/* keyboard nav for cards */
+document.querySelectorAll('[role="button"]').forEach(el=>el.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();el.click()}
+}));
+
+/* YEAR */
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* INIT */
+applyLang();
+
+/* =====================================================================
+   ANALYTICS CONSENT BANNER
+   ===================================================================== */
+(function(){
+  var banner  = document.getElementById('consent-banner');
+  var btnOk   = document.getElementById('cb-accept');
+  var btnNo   = document.getElementById('cb-decline');
+  var consent = localStorage.getItem('ga_consent');
+
+  /* Show banner only if no decision yet */
+  if (!consent) {
+    setTimeout(function(){ banner.classList.add('show'); }, 2000);
+  }
+
+  btnOk.addEventListener('click', function(){
+    localStorage.setItem('ga_consent', 'accepted');
+    banner.classList.remove('show');
+    loadGA();
+    gaEvent('consent', 'accepted');
+  });
+
+  btnNo.addEventListener('click', function(){
+    localStorage.setItem('ga_consent', 'declined');
+    banner.classList.remove('show');
+  });
+})();
+
+/* Réinitialiser le consentement cookies (depuis le footer) */
+function resetCookieConsent() {
+  localStorage.removeItem('ga_consent');
+  var banner = document.getElementById('consent-banner');
+  if (banner) banner.classList.add('show');
+}
+
+/* Privacy modal */
+function openPrivacy() {
+  var ov = document.getElementById('privacy-ov');
+  ov.classList.add('open');
+  ov.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function(){ document.getElementById('privacy-content').focus(); }, 80);
+}
+function closePrivacy() {
+  var ov = document.getElementById('privacy-ov');
+  ov.classList.remove('open');
+  ov.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+window.openPrivacy  = openPrivacy;
+window.closePrivacy = closePrivacy;
+
+/* =====================================================================
+   GA4 EVENT TRACKING - fonctions utilitaires
+   ===================================================================== */
+function gaEvent(action, label, value) {
+  if (!window._gtag) return;
+  window._gtag('event', action, {
+    event_category: 'engagement',
+    event_label:    label || '',
+    value:          value  || 0,
+  });
+}
+
+/* Tracking : ouverture des articles */
+var _origOpenArticle = window.openArticle;
+window.openArticle = function(id) {
+  gaEvent('article_open', id);
+  _origOpenArticle(id);
+};
+
+/* Tracking : clic Amazon */
+var _origRedirectAmazon = window.redirectAmazon;
+window.redirectAmazon = function() {
+  gaEvent('amazon_click', 'enigme');
+  if (_origRedirectAmazon) _origRedirectAmazon();
+};
+
+/* Tracking : inscription newsletter */
+document.addEventListener('DOMContentLoaded', function(){
+  var nlForm = document.getElementById('nlform');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(){
+      gaEvent('newsletter_signup', 'form');
+    });
+  }
+
+  /* Tracking : changement de langue */
+  var langBtn = document.getElementById('langBtn');
+  if (langBtn) {
+    langBtn.addEventListener('click', function(){
+      gaEvent('lang_toggle', document.getElementById('langLbl') ? document.getElementById('langLbl').textContent : '');
+    });
+  }
+
+  /* Tracking : scroll depth (25%, 50%, 75%, 100%) */
+  var depths = [25, 50, 75, 100];
+  var tracked = {};
+  window.addEventListener('scroll', function(){
+    var pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    depths.forEach(function(d){
+      if (pct >= d && !tracked[d]) {
+        tracked[d] = true;
+        gaEvent('scroll_depth', d + '%');
+      }
+    });
+  }, { passive: true });
+});
+
+/* ============================================================
+   ARTICLES DATA
+   ============================================================ */
+const ART = {
+  r1:{tagFr:'Réflexion',tagEn:'Reflection',cls:'t-ref',
+    titleFr:'Le silence comme langage',titleEn:'Silence as language',
+    dateFr:'Février 2025 · 8 min de lecture',dateEn:'February 2025 · 8 min read',
+    bodyFr:`<p>Il existe un paradoxe au cœur du silence. On le croit vide, creux, absence de sens. Mais qui a vraiment prêté attention au silence sait qu'il est, au contraire, saturé - de tensions retenues, de mots avalés, d'émotions que le langage ne parvient pas à contenir.</p><p>J'ai longtemps pensé que parler était un signe de courage. Et me taire, une forme de lâcheté. Mais avec le temps, j'ai appris à lire les silences comme on lit un poème - non pas pour ce qu'ils disent, mais pour ce qu'ils <em>refusent</em> de dire.</p><p>Le silence d'une personne qui écoute vraiment n'a rien à voir avec le silence de quelqu'un qui a renoncé. Le silence entre deux amis qui se connaissent depuis longtemps est une langue à part entière. Et le silence qui suit une rupture ? Il est peut-être le texte le plus dense qui soit.</p><p>Nous vivons dans une culture du bruit. L'ère numérique a fait du silence une anomalie sociale - une absence de signal à combler immédiatement. Le silence est devenu suspect.</p><p>Mais peut-être est-ce précisément pour cela qu'il est devenu précieux. Celui qui sait se taire - vraiment se taire, pas juste attendre son tour de parler - possède quelque chose que la modernité n'a pas encore réussi à monétiser.</p>`,
+    bodyEn:`<p>There is a paradox at the heart of silence. We believe it empty, hollow, devoid of meaning. But whoever has truly paid attention knows it is saturated - with held tensions, swallowed words, emotions language cannot contain.</p><p>I long believed speaking was a sign of courage. And keeping silent, a form of cowardice. But with time, I learned to read silences as one reads a poem - not for what they say, but for what they <em>refuse</em> to say.</p><p>The silence of someone who truly listens is nothing like the silence of someone who has given up. The silence between two old friends is a language in itself. And the silence that follows a breakup? It may be the densest text of all.</p><p>We live in a culture of noise. The digital age has made silence a social anomaly. Silence has become suspicious.</p><p>But perhaps that is precisely why it has become precious. Whoever knows how to be silent - truly silent - possesses something modernity has not yet managed to monetize.</p>`},
+
+  r2:{tagFr:'Réflexion',tagEn:'Reflection',cls:'t-ref',
+    titleFr:'Mélancolie productive',titleEn:'Productive melancholy',
+    dateFr:'Octobre 2024 · 7 min de lecture',dateEn:'October 2024 · 7 min read',
+    bodyFr:`<p>La modernité a peur de la tristesse. Elle l'a pathologisée, médicamentée, transformée en symptôme à corriger. Mais il existe une tristesse qui n'est pas maladie - c'est la mélancolie, ce sentiment doux-amer d'être en contact avec la finitude des choses.</p><p>La mélancolie est la tristesse des choses belles qui passent. Elle n'annihile pas, elle approfondit. Elle nous rend poreux au monde.</p><p>Les grands créateurs ont souvent flirté avec la mélancolie non pas parce qu'elle les brisait, mais parce qu'elle les rendait sensibles à des nuances que le bonheur ne permet pas de voir.</p><p>Je ne plaide pas pour cultiver la tristesse à dessein. Mais pour lui laisser de la place - rester un moment avec ce qui fait mal. Voir ce qu'il a à nous apprendre.</p>`,
+    bodyEn:`<p>Modernity fears sadness. It has pathologized it, medicated it. But there exists a sadness that is not illness - it is melancholy, that bittersweet feeling of being in contact with the finitude of things.</p><p>Melancholy is the sadness of beautiful things passing. It doesn't annihilate, it deepens. It makes us porous to the world.</p><p>Great creators have flirted with melancholy not because it broke them, but because it made them sensitive to nuances that happiness doesn't reveal.</p><p>I am not advocating for cultivating sadness deliberately. But for giving it space - staying a moment with what hurts. Seeing what it has to teach us.</p>`},
+
+  r3:{tagFr:'Réflexion',tagEn:'Reflection',cls:'t-ref',
+    titleFr:'Ce que les ruines apprennent',titleEn:'What ruins teach',
+    dateFr:'Novembre 2024 · 6 min de lecture',dateEn:'November 2024 · 6 min read',
+    bodyFr:`<p>Les ruines sont des textes écrits par le temps. Elles racontent non pas ce qui a été construit, mais ce qui a résisté - et par contraste, tout ce qui a cédé.</p><p>Debout devant les ruines d'une civilisation disparue, nous ne voyons pas de la décrépitude. Nous voyons de l'ambition fossilisée.</p><p>Ce qui reste des grandes civilisations, c'est rarement ce qu'elles voulaient transmettre. Les empires voulaient laisser leurs noms. Ils ont laissé leurs recettes de pain, leurs dieux mineurs, leurs chansons populaires.</p><p>La leçon des ruines n'est pas le nihilisme. C'est la modestie. Et peut-être la libération : si tout s'effondre un jour, construisons ce qui vaut la peine d'être construit.</p>`,
+    bodyEn:`<p>Ruins are texts written by time. They tell not of what was built, but of what resisted - and by contrast, everything that gave way.</p><p>Standing before the ruins of a vanished civilization, we don't see decay. We see fossilized ambition.</p><p>What remains of great civilizations is rarely what they wanted to transmit. Empires wanted to leave their names. They left bread recipes, minor gods, popular songs.</p><p>The lesson of ruins is not nihilism. It is humility. And perhaps liberation: if everything collapses, let us build what is worth building.</p>`},
+
+  e1:{tagFr:'Essai',tagEn:'Essay',cls:'t-ess',
+    titleFr:"L'art de l'inachèvement",titleEn:'The art of incompleteness',
+    dateFr:'Janvier 2025 · 12 min de lecture',dateEn:'January 2025 · 12 min read',
+    bodyFr:`<p>La perfection est menteuse. Elle nous promet qu'il existe un point d'arrivée - un moment où l'œuvre sera enfin finie, l'idée enfin exprimée. Mais ce moment n'existe pas.</p><p>J'ai passé des années à réécrire des débuts d'articles sans jamais les finir. À polir des phrases jusqu'à ce qu'elles perdent toute vie. À attendre d'être prêt.</p><p>L'inachèvement n'est pas un échec. C'est parfois la forme la plus honnête qu'une idée puisse prendre. Schubert n'a pas fini sa huitième symphonie - et c'est peut-être la plus émouvante qu'il ait jamais écrite.</p><p>Laisser quelque chose d'inachevé, c'est faire confiance au lecteur. C'est lui dire : je te donne mes matériaux bruts. À toi d'en faire quelque chose.</p>`,
+    bodyEn:`<p>Perfection is a liar. It promises us a destination - a moment when the work will finally be done. But that moment does not exist.</p><p>I spent years rewriting beginnings without ever finishing them. Polishing sentences until they lost all life. Waiting to be ready.</p><p>Incompleteness is not failure. It is sometimes the most honest form an idea can take. Schubert didn't finish his eighth symphony - and it may be the most moving thing he ever wrote.</p><p>Leaving something unfinished means trusting the reader. It means saying: here are my raw materials. Do something with them.</p>`},
+
+  e2:{tagFr:'Essai',tagEn:'Essay',cls:'t-ess',
+    titleFr:"Écrire contre l'oubli",titleEn:'Writing against forgetting',
+    dateFr:'Septembre 2024 · 9 min de lecture',dateEn:'September 2024 · 9 min read',
+    bodyFr:`<p>Pourquoi écrivons-nous ? Non pour être lus, du moins pas d'abord. Nous écrivons pour prouver que nous avons existé à un moment précis, dans une lumière précise, avec ce poids particulier dans la poitrine que les mots ne peuvent pas tout à fait nommer.</p><p>L'oubli est notre condition de base. Nous oublions presque tout de nos vies - et pourtant chaque moment semblait important quand il se déroulait.</p><p>L'écriture est une rébellion contre cette amnésie naturelle. Elle dit : j'étais là. Ce moment a eu lieu. Il comptait.</p>`,
+    bodyEn:`<p>Why do we write? Not to be read, at least not first. We write to prove we existed at a precise moment, in a precise light, with that particular weight in the chest that words cannot quite name.</p><p>Forgetting is our default condition. We forget almost everything about our lives - and yet each moment seemed important as it unfolded.</p><p>Writing is a rebellion against this natural amnesia. It says: I was here. This moment happened. It mattered.</p>`},
+
+  e3:{tagFr:'Essai',tagEn:'Essay',cls:'t-ess',
+    titleFr:'La solitude comme école',titleEn:'Solitude as a school',
+    dateFr:'Août 2024 · 10 min de lecture',dateEn:'August 2024 · 10 min read',
+    bodyFr:`<p>La solitude n'est pas un manque. C'est un espace d'apprentissage que la société moderne a rendu presque impossible à habiter. Partout, des écrans, des notifications, des sollicitations.</p><p>Et pourtant, toutes les traditions de sagesse valorisent la retraite solitaire. Les philosophes, les artistes, les mystiques - tous ont cultivé la capacité à rester seuls avec eux-mêmes sans chercher à fuir.</p><p>Apprendre à être seul est une compétence. Et comme toutes les compétences, elle s'acquiert par la pratique.</p>`,
+    bodyEn:`<p>Solitude is not a lack. It is a learning space that modern society has made nearly impossible to inhabit. Everywhere, screens, notifications, solicitations.</p><p>And yet every wisdom tradition vill. And like all skills, it is acquired through practice.</p>`},
+
+  /* ============================================================
+     POÈMES - REMPLACEZ CES TEXTES PAR VOS VRAIS POÈMES
+
+     Pour chaque poème :
+     1. Changez titleFr par le vrai titre de votre poème
+     2. Changez dateFr par la date de composition
+     3. Dans bodyFr, écrivez vos vers avec ce format :
+        <p>Vers 1<br>Vers 2<br>Vers 3</p>
+        <p>Deuxième strophe vers 1<br>Vers 2</p>
+     Le copyright s'affiche automatiquement.
+     ============================================================ */
+  p1:{tagFr:'Poème',tagEn:'Poem',cls:'t-poe',
+    titleFr:'[Titre de votre poème 1]',
+    titleEn:'[Title of your poem 1]',
+    dateFr:'[Date de composition]',
+    dateEn:'[Date of composition]',
+    bodyFr:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REMPLACEZ CE TEXTE par votre vrai poème.<br>
+  Dans le JS ci-dessous, trouvez : <strong style="color:var(--gold)">p1:{ bodyFr:</strong><br>
+  et remplacez le contenu entre les backticks par vos vers.
+</p>
+<p>Premier vers de votre poème<br>
+Deuxième vers<br>
+Troisième vers<br>
+Quatrième vers</p>
+<p>Deuxième strophe<br>
+Vers 5<br>
+Vers 6</p>
+</div>`,
+    bodyEn:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REPLACE THIS TEXT with your real poem.<br>
+  In the JS below, find: <strong style="color:var(--gold)">p1:{ bodyEn:</strong><br>
+  and replace the content between backticks with your verses.
+</p>
+<p>First line of your poem<br>
+Second line<br>
+Third line<br>
+Fourth line</p>
+</div>`},
+
+  p2:{tagFr:'Poème',tagEn:'Poem',cls:'t-poe',
+    titleFr:'[Titre de votre poème 2]',
+    titleEn:'[Title of your poem 2]',
+    dateFr:'[Date de composition]',
+    dateEn:'[Date of composition]',
+    bodyFr:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REMPLACEZ CE TEXTE par votre vrai poème 2.<br>
+  Trouvez <strong style="color:var(--gold)">p2:{ bodyFr:</strong> dans le JS.
+</p>
+<p>Vos vers ici<br>
+Deuxième ligne<br>
+Troisième ligne</p>
+</div>`,
+    bodyEn:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REPLACE THIS TEXT with your real poem 2.<br>
+  Find <strong style="color:var(--gold)">p2:{ bodyEn:</strong> in the JS.
+</p>
+<p>Your verses here<br>
+Second line<br>
+Third line</p>
+</div>`},
+
+  p3:{tagFr:'Poème',tagEn:'Poem',cls:'t-poe',
+    titleFr:'[Titre de votre poème 3]',
+    titleEn:'[Title of your poem 3]',
+    dateFr:'[Date de composition]',
+    dateEn:'[Date of composition]',
+    bodyFr:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REMPLACEZ CE TEXTE par votre vrai poème 3.<br>
+  Trouvez <strong style="color:var(--gold)">p3:{ bodyFr:</strong> dans le JS.
+</p>
+<p>Vos vers ici<br>
+Deuxième ligne<br>
+Troisième ligne</p>
+</div>`,
+    bodyEn:`<div style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.15rem;line-height:2.5;color:var(--mist)">
+<p style="color:var(--fog);font-style:normal;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;margin-bottom:2rem">
+  ✏️ REPLACE THIS TEXT with your real poem 3.<br>
+  Find <strong style="color:var(--gold)">p3:{ bodyEn:</strong> in the JS.
+</p>
+<p>Your verses here<br>
+Second line<br>
+Third line</p>
+</div>`},
+
+  ia1:{tagFr:'IA',tagEn:'AI',cls:'t-ia',
+    titleFr:'Penser avec les machines',titleEn:'Thinking with machines',
+    dateFr:'Novembre 2024 · 10 min de lecture',dateEn:'November 2024 · 10 min read',
+    bodyFr:`<p>Il y a quelques mois, j'ai demandé à une intelligence artificielle de m'aider à finir un texte que je n'arrivais pas à terminer. Elle l'a fini. Et j'ai ressenti quelque chose d'étrange - ni fierté ni honte, mais une forme de vertige philosophique.</p><p>Si une machine peut compléter ma pensée, qu'est-ce que cela dit de ma pensée ? Suis-je moins moi-même parce que j'ai utilisé un outil ? Le pianiste est-il moins artiste parce qu'il n'a pas fabriqué son piano ?</p><p>L'intelligence artificielle ne remplace pas la pensée humaine. Elle en révèle les structures, les patterns, les automatismes. Elle montre ce qui est mécanique dans notre raisonnement - et par contraste, ce qui ne l'est pas.</p><p>Ce qui reste irréductiblement humain ? L'expérience de souffrir. La conscience que le temps passe. L'amour d'une personne en particulier. Ces choses-là, aucun modèle ne les connaît. Il peut les décrire. Il ne peut pas les <em>vivre</em>.</p>`,
+    bodyEn:`<p>A few months ago, I asked an AI to help me finish a text I couldn't complete. It finished it. And I felt something strange - neither pride nor shame, but a kind of philosophical vertigo.</p><p>If a machine can complete my thought, what does that say about my thought? Am I less myself because I used a tool? Is the pianist less of an artist because they didn't build their piano?</p><p>AI doesn't replace human thought. It reveals its structures, patterns, automatisms. It shows what is mechanical in our reasoning - and by contrast, what is not.</p><p>What remains irreducibly human? The experience of suffering. The awareness that time passes. The love of one particular person. These things, no model knows. It can describe them. It cannot <em>live</em> them.</p>`},
+
+  excerpt:{tagFr:'Extrait',tagEn:'Excerpt',cls:'t-ref',
+    titleFr:'Énigme - Extrait',titleEn:'Énigme - Excerpt',
+    dateFr:'Fabrice Fils-Aimé · Avril 2024',dateEn:'Fabrice Fils-Aimé · April 2024',
+    bodyFr:`<p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.1rem;line-height:2;color:var(--mist)">Au loin, elle crut entendre le chant des sirènes qui d'après les légendes, venaient se baigner sur le rivage. Elle continua sa marche, guidée par son intuition. Tout d'un coup, elle entendit le roulement cadencé d'un tambour qui résonnait.</p><p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.1rem;line-height:2;color:var(--mist)">Elsie se laissa emporter par le rythme saccadé. Son corps obéissait sans résistance aux vagues de la mer, cette grande berceuse qui gardait enfouis en elle, les horreurs, les mystères et les trésors de l'humanité.</p><div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);font-family:'Courier Prime',monospace;font-size:.7rem;color:var(--fog);letter-spacing:.1em">ISBN 2386170993 · 41 pages · Amazon CA / FR / COM</div>`,
+    bodyEn:`<p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.1rem;line-height:2;color:var(--mist)">In the distance, she thought she heard the song of the sirens who, according to legend, came to bathe on the shore. She continued walking, guided by her intuition. Suddenly, she heard the rhythmic roll of a drum resonating.</p><p style="font-family:'EB Garamond',serif;font-style:italic;font-size:1.1rem;line-height:2;color:var(--mist)">Elsie let herself be carried away by the staccato rhythm. Her body yielded without resistance to the waves of the sea, that great lullaby which kept buried within it the horrors, mysteries and treasures of humanity.</p><div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);font-family:'Courier Prime',monospace;font-size:.7rem;color:var(--fog);letter-spacing:.1em">ISBN 2386170993 · 41 pages · Amazon CA / FR / COM</div>`},
+
+  /* ============================================================
+     RECHERCHES IA - Remplacez par vos vraies recherches
+     ============================================================ */
+  rec1:{tagFr:'Recherche IA',tagEn:'AI Research',cls:'t-ia',
+    titleFr:'Variabilité temporelle des LLM : observations comparatives',
+    titleEn:'Temporal variability of LLMs: comparative observations',
+    dateFr:'2025 · Fabrice Fils-Aimé',dateEn:'2025 · Fabrice Fils-Aimé',
+    bodyFr:`<p>Cette recherche documente une série d'observations sur la manière dont les réponses d'un même modèle de langage (LLM) varient en fonction du moment de la requête, de la langue utilisée et du contexte conversationnel.</p>
+<p>L'hypothèse centrale : les LLM ne sont pas des systèmes déterministes fixes. Leur comportement fluctue de manière mesurable - et ces fluctuations suivent des patterns identifiables, même sans accès au code source ou aux paramètres internes du modèle.</p>
+<p><strong style="color:var(--gold)">Méthodologie :</strong> Requêtes identiques soumises à intervalles réguliers sur plusieurs semaines. Comparaison des réponses selon la langue (FR/EN/créole), l'heure et la formulation. Analyse qualitative des variations observées.</p>
+<p><strong style="color:var(--gold)">Résultats préliminaires :</strong> Des patterns de variabilité reproductibles ont été identifiés. Les réponses en français et en anglais montrent des différences structurelles au-delà de la simple traduction. Des observations plus détaillées sont en cours.</p>
+<div style="margin-top:2rem;padding:1rem 1.25rem;background:var(--lifted);border:1px solid var(--border2);border-left:3px solid #5890D8;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:.65rem;color:var(--fog);line-height:1.8">
+  <div style="color:#5890D8;letter-spacing:.15em;text-transform:uppercase;font-size:.58rem;margin-bottom:.4rem">Pour citer ce travail</div>
+  Fils-Aimé, Fabrice. (2025). "Variabilité temporelle des LLM : observations comparatives." <em>fabricefilsaime.com</em>. Consulté le JJ/MM/AAAA.
+</div>`,
+    bodyEn:`<p>This research documents a series of observations on how responses from the same language model (LLM) vary according to the time of the query, the language used, and the conversational context.</p>
+<p>The central hypothesis: LLMs are not fixed deterministic systems. Their behavior fluctuates in measurable ways - and these fluctuations follow identifiable patterns, even without access to source code or internal model parameters.</p>
+<p><strong style="color:var(--gold)">Methodology:</strong> Identical queries submitted at regular intervals over several weeks. Comparison of responses by language (FR/EN/Creole), time, and phrasing. Qualitative analysis of observed variations.</p>
+<p><strong style="color:var(--gold)">Preliminary results:</strong> Reproducible variability patterns have been identified. French and English responses show structural differences beyond simple translation. More detailed observations are ongoing.</p>
+<div style="margin-top:2rem;padding:1rem 1.25rem;background:var(--lifted);border:1px solid var(--border2);border-left:3px solid #5890D8;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:.65rem;color:var(--fog);line-height:1.8">
+  <div style="color:#5890D8;letter-spacing:.15em;text-transform:uppercase;font-size:.58rem;margin-bottom:.4rem">To cite this work</div>
+  Fils-Aimé, Fabrice. (2025). "Temporal variability of LLMs: comparative observations." <em>fabricefilsaime.com</em>. Retrieved DD/MM/YYYY.
+</div>`},
+
+  rec2:{tagFr:'Recherche IA',tagEn:'AI Research',cls:'t-ia',
+    titleFr:'Validation multilingue des biais des modèles',
+    titleEn:'Multilingual validation of model biases',
+    dateFr:'2025 · Fabrice Fils-Aimé',dateEn:'2025 · Fabrice Fils-Aimé',
+    bodyFr:`<p>Cette étude exploite une compétence rare - la maîtrise trilingue du français, de l'anglais et du créole haïtien - pour tester si les grands modèles de langage produisent des réponses structurellement différentes selon la langue d'entrée.</p>
+<p>La question n'est pas seulement linguistique. Elle est culturelle et épistémologique : le modèle encode-t-il des biais différents selon la langue ? Certaines langues donnent-elles accès à des connaissances ou à des raisonnements que d'autres ne permettent pas ?</p>
+<p><strong style="color:var(--gold)">Protocole :</strong> Mêmes requêtes soumises en FR, EN et créole haïtien. Analyse des différences de contenu, de ton, de longueur et de structure. Identification des biais systématiques par langue.</p>
+<p><strong style="color:var(--gold)">Observation notable :</strong> Le créole haïtien produit des réponses significativement différentes - parfois plus riches en nuances culturelles, parfois plus lacunaires - révélant les asymétries des données d'entraînement.</p>
+<div style="margin-top:2rem;padding:1rem 1.25rem;background:var(--lifted);border:1px solid var(--border2);border-left:3px solid #5890D8;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:.65rem;color:var(--fog);line-height:1.8">
+  <div style="color:#5890D8;letter-spacing:.15em;text-transform:uppercase;font-size:.58rem;margin-bottom:.4rem">Pour citer ce travail</div>
+  Fils-Aimé, Fabrice. (2025). "Validation multilingue des biais des modèles." <em>fabricefilsaime.com</em>. Consulté le JJ/MM/AAAA.
+</div>`,
+    bodyEn:`<p>This study exploits a rare competence - trilingual mastery of French, English and Haitian Creole - to test whether large language models produce structurally different responses depending on the input language.</p>
+<p>The question is not merely linguistic. It is cultural and epistemological: does the model encode different biases by language? Do certain languages give access to knowledge or reasoning that others do not?</p>
+<p><strong style="color:var(--gold)">Protocol:</strong> Same queries submitted in FR, EN and Haitian Creole. Analysis of differences in content, tone, length and structure. Identification of systematic biases by language.</p>
+<p><strong style="color:var(--gold)">Notable observation:</strong> Haitian Creole produces significantly different responses - sometimes richer in cultural nuance, sometimes more incomplete - revealing asymmetries in training data.</p>
+<div style="margin-top:2rem;padding:1rem 1.25rem;background:var(--lifted);border:1px solid var(--border2);border-left:3px solid #5890D8;border-radius:0 8px 8px 0;font-family:var(--mono);font-size:.65rem;color:var(--fog);line-height:1.8">
+  <div style="color:#5890D8;letter-spacing:.15em;text-transform:uppercase;font-size:.58rem;margin-bottom:.4rem">To cite this work</div>
+  Fils-Aimé, Fabrice. (2025). "Multilingual validation of model biases." <em>fabricefilsaime.com</em>. Retrieved DD/MM/YYYY.
+</div>`},
+};
+
+/* FAQ accordion */
+function toggleFaq(btn){
+  const body=btn.nextElementSibling;
+  const arrow=btn.querySelector('.faq-arrow');
+  const isOpen=body.style.display==='block';
+  // Close all
+  document.querySelectorAll('.faq-body').forEach(b=>b.style.display='none');
+  document.querySelectorAll('.faq-arrow').forEach(a=>a.style.transform='');
+  // Open if was closed
+  if(!isOpen){body.style.display='block';if(arrow)arrow.style.transform='rotate(180deg)';}
+}
+</script>
+
+<!-- ── BOOK PAGE OVERLAY ── -->
+<div class="book-page-ov" id="bookPageOv" role="dialog" aria-modal="true" aria-label="Le Livre">
+  <div class="bp-close">
+    <button class="bp-back" onclick="closeBookPage()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      <span data-fr="Retour" data-en="Back">Retour</span>
+    </button>
+    <span style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--fog)">Énigme · Fabrice Fils-Aimé</span>
+    <button class="bp-back" onclick="closeBookPage()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="bp-inner">
+    <div class="wrap">
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:4rem;align-items:center" class="rv">
+
+        <!-- 3D Book - compact -->
+        <div class="book-scene rv" style="width:180px">
+          <div class="book3d" style="width:180px;height:260px" role="img" aria-label="Couverture Énigme">
+            <div class="bsp"><span>Énigme</span><span>Fabrice Fils-Aimé</span></div>
+            <div class="bf">
+              <!--
+                Décommentez pour ajouter la vraie couverture :
+                <img src="enigme-couverture.jpg" alt="Couverture Énigme"
+                     style="width:100%;height:100%;object-fit:cover;border-radius:2px 5px 5px 2px;"
+                     onerror="this.style.display='none'" />
+              -->
+              <div style="display:flex;flex-direction:column;justify-content:space-between;padding:1.25rem 1rem;height:100%;position:relative">
+                <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,168,75,.15) 0%,transparent 50%);pointer-events:none;border-radius:2px 5px 5px 2px"></div>
+                <div class="bf-author" style="font-size:.55rem">Fabrice Fils-Aimé</div>
+                <div class="bf-title" style="font-size:1.6rem">Énigme</div>
+                <div class="bf-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="book-shadow"></div>
+        </div>
+
+        <!-- Info compacte -->
+        <div class="rv" style="--d:.1s">
+          <div class="eyebrow" data-fr="Premier Roman · Avril 2024" data-en="Debut Novel · April 2024">Premier Roman · Avril 2024</div>
+          <h2 class="sec-title" style="margin-bottom:.75rem">Énigme</h2>
+          <p class="body-p" style="max-width:52ch"
+            data-fr="Elsie longe un rivage hanté de tambours et de sirènes. Une novella dense et sensorielle sur l'identité, le désir, et les secrets que nous portons sans le savoir."
+            data-en="Elsie walks a shoreline haunted by drums and sirens. A dense, sensory novella about identity, desire, and the secrets we carry unknowingly.">
+            Elsie longe un rivage hanté de tambours et de sirènes. Une novella dense et sensorielle sur l'identité, le désir, et les secrets que nous portons sans le savoir.
+          </p>
+          <div class="book-meta" style="margin:1.25rem 0">
+            <div class="bm-item"><span class="bm-label">Pages</span><span class="bm-val">41</span></div>
+            <div class="bm-item"><span class="bm-label" data-fr="Langue" data-en="Language">Langue</span><span class="bm-val" data-fr="Français" data-en="French">Français</span></div>
+            <div class="bm-item"><span class="bm-label">ISBN</span><span class="bm-val">2386170993</span></div>
+          </div>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">
+            <a href="livre.html"
+              style="display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--night);background:var(--gold);border:none;padding:.75rem 1.5rem;border-radius:100px;text-decoration:none;font-weight:500;transition:background .2s"
+              onmouseover="this.style.background='var(--rust);this.style.color="#fff"'"
+              onmouseout="this.style.background='var(--gold)'"
+              data-fr="Découvrir le livre →" data-en="Discover the book →">Découvrir le livre →</a>
+            <button class="btn btn-ghost btn-sm" onclick="redirectAmazon()"
+              data-fr="Commander sur Amazon" data-en="Order on Amazon">Commander sur Amazon</button>
+          </div>
+          <p class="amazon-hint" id="aHint"
+            data-fr="Détection de votre pays…" data-en="Detecting your country…">Détection de votre pays…</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
